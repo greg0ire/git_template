@@ -1,0 +1,4 @@
+#!/bin/sh
+
+php /usr/share/nginx/html/sismo.php --quiet build <insert_project_slug_here> `git log -1 HEAD --pretty="%H"` &
+
