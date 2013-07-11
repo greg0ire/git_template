@@ -13,3 +13,7 @@ These hooks automate some tasks with the help of git
 ## Usage
 
 If you want to use a script, simply remove the .sample extension
+
+## Source
+
+Inspired by [Tim Pope](http://tbaggery.com/)
