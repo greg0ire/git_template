@@ -9,7 +9,7 @@ then
     if [ -d "vendor/doctrine/migrations" ]
     then
 	echo "Looks like you're using migrations"
-	read -p "Do you wish to update it ?" -n 1
+	read -p "Do you wish to migrate ?" -n 1
 	if [[ ! $REPLY =~ ^[OoYy]$ ]]
 	then
 	    echo "not updating"
@@ -19,7 +19,7 @@ then
     else
 	echo "Looks like you're not using migrations! the following queries will be run:"
 	app/console doctrine:schema:update --dump-sql --complete
-	read -p "Do you wish to update it ?" -n 1
+	read -p "Do you wish to update the schema ?" -n 1
 	if [[ ! $REPLY =~ ^[OoYy]$ ]]
 	then
 	    echo "not updating"
