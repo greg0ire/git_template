@@ -1,5 +1,5 @@
 #!/bin/bash -u
-app/console doctrine:schema:validate
+app/console doctrine:schema:validate -q
 RESULT=$?
 case $RESULT in
     2)
@@ -27,5 +27,6 @@ case $RESULT in
 	fi
     break;;
     3)
+	app/console doctrine:schema:validate
 	echo "Your schema is invalid, but won't be updated because your mapping has errors. Please Fix them first."
 esac
