@@ -1,2 +1,5 @@
 #!/bin/sh
 .git/hooks/composer/post-checkout
+
+# enable me!
+# .git/hooks/doctrine/update-schema

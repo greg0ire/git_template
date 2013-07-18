@@ -1,2 +1,5 @@
 #!/bin/sh
 .git/hooks/composer/post-merge
+
+# enable me!
+# .git/hooks/doctrine/update-schema
