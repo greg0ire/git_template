@@ -1,7 +1,7 @@
 #!/bin/bash -u
 # The following condition won't work unless we use bash
 # to understand this condition, see https://github.com/doctrine/doctrine2/blob/master/lib/Doctrine/ORM/Tools/Console/Command/ValidateSchemaCommand.php
-app/console doctrine:schema:validate -q
+app/console doctrine:schema:validate
 RESULT=$?
 if [ $[$RESULT & 2] == 2 ]
 then
