@@ -25,8 +25,9 @@ case $RESULT in
 	    fi
 	    app/console doctrine:schema:update --force --complete
 	fi
-    break;;
+    ;;
     3)
 	app/console doctrine:schema:validate
 	echo "Your schema is invalid, but won't be updated because your mapping has errors. Please Fix them first."
+    ;;
 esac
