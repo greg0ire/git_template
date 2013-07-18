@@ -17,7 +17,7 @@ case $RESULT in
 	else
 	    echo "Looks like you're not using migrations! the following queries will be run:"
 	    app/console doctrine:schema:update --dump-sql --complete
-	    read -p "Do you wish to update the schema ?" -n 1
+	    read -p "Do you wish to update the schema ?"
 	    if [[ ! $REPLY =~ ^[OoYy]$ ]]
 	    then
 		echo "not updating"
