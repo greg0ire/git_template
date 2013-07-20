@@ -12,6 +12,8 @@ These hooks automate some tasks with the help of git
 
 ## What's inside ?
 
+For the moment, php hooks only
+
 ### Composer hook
 
 This set of scripts monitor `composer.lock` changes and updates your vendor
@@ -29,7 +31,9 @@ updates / migrates your database depending on the presence of a
 
 ## Usage
 
-If you want to use a script, simply remove the .sample extension
+If your project is php project, then run
+
+    ln -sv .git/php_hooks .git/hooks
 
 ## Source
 
