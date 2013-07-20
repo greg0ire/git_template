@@ -12,6 +12,10 @@ These hooks automate some tasks with the help of git
 
 ## What's inside ?
 
+### Exuberant Ctags hook
+
+Updates .git/tags file by scanning the project with the ctags command.
+
 ### Composer hook
 
 This set of scripts monitor `composer.lock` changes and updates your vendor

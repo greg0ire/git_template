@@ -1,0 +1,5 @@
+#!/bin/sh
+
+.git/hooks/ctags/update-ctags >/dev/null 2>&1 &
+.git/hooks/composer/post-checkout
+.git/hooks/doctrine/update-schema
