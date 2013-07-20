@@ -1,0 +1,19 @@
+#!/bin/sh
+
+set -e
+trap "rm -f .git/tags.$$" EXIT
+#ctags --tag-relative -Rf.git/tags.$$ --exclude=.git --languages=-javascript,sql,php
+ctags \
+    -h ".php" \
+    -Rf.git/tags.$$ \
+    --totals=yes \
+    --tag-relative=yes \
+    --PHP-kinds=cfiv \
+    --regex-PHP='/(abstract)?\s+class\s+([^ ]+)/\2/c/' \
+    --regex-PHP='/interface\s+([^ ]+)/\1/i/' \
+    --exclude="*.js" \
+    --exclude=".svn" \
+    --exclude=".git"
+    #--languages=-javascript,sql,php
+
+mv .git/tags.$$ .git/tags

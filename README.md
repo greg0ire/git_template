@@ -14,6 +14,11 @@ These hooks automate some tasks with the help of git
 
 For the moment, php hooks only
 
+### Exuberant Ctags hook
+
+Updates .git/tags file by scanning the project with the ctags command.
+Enabled by default
+
 ### Composer hook
 
 This set of scripts monitor `composer.lock` changes and updates your vendor
