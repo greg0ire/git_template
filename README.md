@@ -17,17 +17,19 @@ For the moment, php hooks only
 ### Composer hook
 
 This set of scripts monitor `composer.lock` changes and updates your vendor
-dependencies when appropriate.
+dependencies when appropriate. Enabled by default.
 
 ### Sismo hook
 
 This hook makes [Sismo](http://sismo.sensiolabs.org/) run each time you commit.
+Disabled by default, uncomment it in the post-commit hook
 
 ### Doctrine hook
 
 This hooks runs the `doctrine:schema:validate` task of a Symfony project and
 updates / migrates your database depending on the presence of a
 `doctrine-migrations` folder in your vendor directory.
+Disabled by default, uncomment it in all hooks.
 
 ## Usage
 

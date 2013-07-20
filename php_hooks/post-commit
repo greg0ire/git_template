@@ -1,5 +1,5 @@
 #!/bin/sh
-.git/hooks/sismo/post-commit
+# .git/hooks/sismo/post-commit
 
 # enable me!
 # .git/hooks/doctrine/update-schema
