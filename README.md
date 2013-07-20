@@ -1,6 +1,6 @@
 # My personal set of git hooks
 
-These hooks automate some tasks with the help of git
+These hooks automate some tasks with the help of git.
 
 ## Installation
 
@@ -12,12 +12,12 @@ These hooks automate some tasks with the help of git
 
 ## What's inside ?
 
-For the moment, php hooks only
+For the moment, php hooks only.
 
 ### Exuberant Ctags hook
 
 Updates .git/tags file by scanning the project with the ctags command.
-Enabled by default
+Enabled by default.
 
 ### Composer hook
 
@@ -27,7 +27,7 @@ dependencies when appropriate. Enabled by default.
 ### Sismo hook
 
 This hook makes [Sismo](http://sismo.sensiolabs.org/) run each time you commit.
-Disabled by default, uncomment it in the post-commit hook
+Disabled by default, uncomment it in the post-commit hook.
 
 ### Doctrine hook
 
