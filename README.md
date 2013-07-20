@@ -38,7 +38,7 @@ Disabled by default, uncomment it in all hooks.
 
 ## Usage
 
-If your project is php project, then run
+If your project is a php project, then run
 
     ln -sv .git/php_hooks .git/hooks
 
