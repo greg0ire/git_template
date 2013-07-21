@@ -1,0 +1,2 @@
+#!/bin/sh
+.git/hooks/php/ctags/update-ctags >/dev/null 2>&1 &

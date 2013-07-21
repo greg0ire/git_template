@@ -1,8 +1,0 @@
-#!/bin/sh
-
-CHANGED=`git diff $1 $2 --stat -- $GIT_DIR/../composer.lock | wc -l`
-if [ $CHANGED -gt 0 ];
-then
-    echo "composer.lock has changed!"
-    composer install --dev
-fi

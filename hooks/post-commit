@@ -1,0 +1,12 @@
+#!/bin/sh
+if [ -f .git/hooks/hooksrc ]
+then
+    source .git/hooks/hooksrc
+    for enabled_plugin in $php_plugins
+    do
+       if [ -f .git/hooks/php/$enabled_plugin/post-checkout ]
+       then
+       	source .git/hooks/php/$enabled_plugin/post-checkout
+       fi
+    done
+fi

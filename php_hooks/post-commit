@@ -1,6 +1,0 @@
-#!/bin/sh
-.git/hooks/ctags/update-ctags >/dev/null 2>&1 &
-# .git/hooks/sismo/post-commit
-
-# enable me!
-# .git/hooks/doctrine/update-schema

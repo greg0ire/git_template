@@ -17,30 +17,30 @@ For the moment, php hooks only.
 ### Exuberant Ctags hook
 
 Updates .git/tags file by scanning the project with the ctags command.
-Enabled by default.
 
 ### Composer hook
 
 This set of scripts monitor `composer.lock` changes and updates your vendor
-dependencies when appropriate. Enabled by default.
+dependencies when appropriate.
 
 ### Sismo hook
 
 This hook makes [Sismo](http://sismo.sensiolabs.org/) run each time you commit.
-Disabled by default, uncomment it in the post-commit hook.
 
 ### Doctrine hook
 
 This hooks runs the `doctrine:schema:validate` task of a Symfony project and
 updates / migrates your database depending on the presence of a
 `doctrine-migrations` folder in your vendor directory.
-Disabled by default, uncomment it in all hooks.
 
 ## Usage
 
-If your project is a php project, then run
+Start by creating your hooksrc file:
 
-    ln -sv .git/php_hooks .git/hooks
+    mv .git/hooks/hooksrc.sample .git/hooks/hookrc
+    
+Then edit it to add plugins you wish to activate. The sample file contains the
+ctags and composer hooks by default.
 
 ## Source
 
