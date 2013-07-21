@@ -42,6 +42,17 @@ Start by creating your hooksrc file:
 Then edit it to add plugins you wish to activate. The sample file contains the
 ctags and composer hooks by default.
 
+## Contributing
+
+Creating your php plugin is as easy as creating a php folder under `hooks/php`.
+You can then create hooks in it. For the moment, only the following are supported
+(because I'm lazy)
+
+* post-commit
+* post-checkout
+* post-merge
+* post-rewrite
+
 ## Source
 
 Inspired by [Tim Pope](http://tbaggery.com/)
