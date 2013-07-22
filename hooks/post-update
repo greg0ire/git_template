@@ -1,4 +1,4 @@
-#!/bin/bash -eux
+#!/bin/sh
 if [ -f hooks/hooksrc ]
 then
     . hooks/hooksrc
