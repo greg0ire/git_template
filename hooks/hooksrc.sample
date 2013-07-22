@@ -1,1 +1,3 @@
 php_plugins="ctags composer"
+php_sismo_path=/usr/share/nginx/html/sismo.php
+php_sismo_slug=
