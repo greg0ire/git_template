@@ -1,4 +1,3 @@
 #!/bin/sh
-
-php /usr/share/nginx/html/sismo.php --quiet build cinema `git log -1 HEAD --pretty="%H"` &
+. .git/hooks/php/sismo/build-project
 
