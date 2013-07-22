@@ -1,0 +1,12 @@
+#!/bin/bash -eux
+if [ -f hooks/hooksrc ]
+then
+    . hooks/hooksrc
+    for enabled_plugin in $php_plugins
+    do
+        if [ -f hooks/php/$enabled_plugin/post-update ]
+        then
+            . hooks/php/$enabled_plugin/post-update
+        fi
+    done
+fi

@@ -25,7 +25,10 @@ dependencies when appropriate.
 
 ### Sismo hook
 
-This hook makes [Sismo](http://sismo.sensiolabs.org/) run each time you commit.
+The post-commit hook makes [Sismo](http://sismo.sensiolabs.org/) run each time you commit.
+The post-update hook is useful if you're developing a library that you integrate
+into n projects, and you don't want to create n sismo projects. Just setup one
+bare repository, and push to it from your n projects.
 
 ### Doctrine hook
 
