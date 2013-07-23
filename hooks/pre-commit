@@ -1,0 +1,17 @@
+#!/bin/bash
+if [ -f .git/hooks/hooksrc ]
+then
+    . .git/hooks/hooksrc
+    for enabled_plugin in "${plugins[@]}"
+    do
+        if [ -f .git/hooks/$enabled_plugin/pre-commit ]
+        then
+            . .git/hooks/$enabled_plugin/pre-commit
+            if [ $? -ne 0 ]
+            then
+                exit 1
+            fi
+        fi
+    done
+fi
+
