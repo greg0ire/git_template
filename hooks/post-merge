@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 if [ -f .git/hooks/hooksrc ]
 then
     . .git/hooks/hooksrc
-    for enabled_plugin in $php_plugins
+    for enabled_plugin in "${plugins[@]}"
     do
         if [ -f .git/hooks/php/$enabled_plugin/post-merge ]
         then
