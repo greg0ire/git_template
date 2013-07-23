@@ -1,6 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
-phrases_file=.git/hooks/php/junkchecker/junk-phrases
+phrases_file=.git/hooks/junkchecker/junk-phrases
 
 if git-rev-parse --verify HEAD >/dev/null 2>&1; then
     against=HEAD
@@ -13,7 +13,7 @@ for FILE in `git diff-index --name-status $against -- | cut -c3-`; do
         # Check if the file contains the phrase
         if [ "grep '$PHRASE' $FILE" ]
         then
-            echo 'Junk phrase detected: '$FILE ' contains ' $PHRASE
+            echo "Junk checker detected: $FILE contains '$PHRASE'"
             exit 1
         fi
     done
