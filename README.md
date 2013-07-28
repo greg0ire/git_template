@@ -8,6 +8,10 @@ These hooks automate some tasks with the help of git.
 
 ## Configuration
 
+Set the newly cloned repo as your git template directory. This will tell git to
+populate new repositories created with either `git clone` or `git init` with
+the content of this directory. By default, it uses `/usr/share/git-core/templates`.
+
     git config --global init.templatedir '~/.git_template'
 
 ## What's inside ?
