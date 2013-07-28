@@ -16,7 +16,7 @@ the content of this directory. By default, it uses `/usr/share/git-core/template
 
 ## What's inside ?
 
-For the moment, mostly php hooks.
+For the moment, mostly hooks related to tools from the php ecosystem.
 
 ### Exuberant Ctags hook
 
