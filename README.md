@@ -25,7 +25,7 @@ Updates .git/tags file by scanning the project with the ctags command.
 ### Composer hook
 
 This set of scripts monitor `composer.lock` changes and updates your vendor
-dependencies when appropriate.
+dependencies when appropriate. It assumes Composer is [globally installed][1].
 
 ### Sismo hook
 
@@ -70,3 +70,5 @@ You can then create hooks in it. For the moment, only the following are supporte
 ## Source
 
 Inspired by [Tim Pope](http://tbaggery.com/)
+
+[1]: https://github.com/composer/composer#global-installation-of-composer-manual
