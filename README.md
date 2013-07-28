@@ -30,7 +30,9 @@ dependencies when appropriate. It assumes Composer is [globally installed][1].
 ### Sismo hook
 
 The post-commit hook makes [Sismo][2] run each time you commit. Make sure you
-configure the environment variables in your hooksrc properly.
+configure the environment variables in your hooksrc properly. It is a post-commit
+hook because Sismo is a *local* Continuous Testing Server, which means you can
+build before you push.
 
 ### Doctrine hook
 
