@@ -1,3 +1,5 @@
+#!/bin/bash
+
 plugins=(php/{ctags,composer} junkchecker)
 
 php_sismo_path=/usr/share/nginx/html/sismo.php
