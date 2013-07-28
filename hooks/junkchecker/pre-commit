@@ -1,8 +1,6 @@
 #!/bin/bash
 
-phrases_file=.git/hooks/junkchecker/junk-phrases
-
-if [ -f $phrases_file ]
+if [ -f $junkchecker_phrases_file ]
 then
     if git-rev-parse --verify HEAD >/dev/null 2>&1; then
         against=HEAD
@@ -11,7 +9,7 @@ then
     fi
 
     for FILE in `git diff-index --name-status $against -- | cut -c3-`; do
-        for PHRASE in `cat $phrases_file`; do
+        for PHRASE in `cat $junkchecker_phrases_file`; do
             grep -q $PHRASE $FILE
             if [ $? -eq 0 ]
             then
