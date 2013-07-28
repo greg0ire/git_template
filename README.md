@@ -73,4 +73,4 @@ Inspired by [Tim Pope][3]
 
 [1]: https://github.com/composer/composer#global-installation-of-composer-manual
 [2]: http://sismo.sensiolabs.org/ "A local Continuous Testing Server"
-[3]: http://tbaggery.com
+[3]: http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
