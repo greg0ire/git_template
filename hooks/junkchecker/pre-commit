@@ -18,4 +18,6 @@ then
             fi
         done
     done
+else
+    echo "Could not find file $junkchecker_phrases_file . Please check your hooksrc."
 fi
