@@ -29,7 +29,8 @@ dependencies when appropriate.
 
 ### Sismo hook
 
-This hook makes [Sismo](http://sismo.sensiolabs.org/) run each time you commit.
+The post-commit hook makes [Sismo](http://sismo.sensiolabs.org/) run each time you commit.
+Make sure you configure the environment variables in your hooksrc properly.
 
 ### Doctrine hook
 
@@ -37,12 +38,21 @@ This hooks runs the `doctrine:schema:validate` task of a Symfony project and
 updates / migrates your database depending on the presence of a
 `doctrine-migrations` folder in your vendor directory.
 
+### Junk checker hook
+
+Checks for user defined phrases that you don't want to commit to your
+repository, such as var_dump, console.log etc.
+
+This can be overridden by doing a:
+
+    git commit --no-verify
+
 ## Usage
 
 Start by creating your hooksrc file:
 
     mv .git/hooks/hooksrc.sample .git/hooks/hookrc
-    
+
 Then edit it to add plugins you wish to activate. The sample file contains the
 ctags and composer hooks by default.
 
