@@ -73,6 +73,10 @@ You can then create hooks in it. For the moment, only the following are supporte
 * post-merge
 * post-rewrite
 
+If you need to add configuration variables in the hooksrc, you need to prefix
+them with the path to your hook, which is obviously unique. This will avoid
+variable names collisions.
+
 ## Source
 
 Inspired by [Tim Pope][3]
