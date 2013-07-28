@@ -20,7 +20,8 @@ For the moment, mostly hooks related to tools from the php ecosystem.
 
 ### Exuberant Ctags hook
 
-Updates .git/tags file by scanning the project with the ctags command.
+Updates .git/tags file by scanning the project with the ctags command. It is
+configured for a php project.
 
 ### Composer hook
 
