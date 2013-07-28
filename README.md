@@ -41,7 +41,7 @@ updates / migrates your database depending on the presence of a
 ### Junk checker hook
 
 Checks for user defined phrases that you don't want to commit to your
-repository, such as var_dump, console.log etc.
+repository, such as `var_dump()`, `console.log()` etc.
 
 This can be overridden by doing a:
 
