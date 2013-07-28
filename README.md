@@ -16,7 +16,7 @@ the content of this directory. By default, it uses `/usr/share/git-core/template
 
 ## What's inside ?
 
-For the moment, php hooks only.
+For the moment, mostly php hooks.
 
 ### Exuberant Ctags hook
 
@@ -48,6 +48,8 @@ repository, such as `var_dump()`, `console.log()` etc.
 This can be overridden by doing a:
 
     git commit --no-verify
+
+This hook is language-agnostic.
 
 ## Usage
 
