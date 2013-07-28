@@ -1,4 +1,4 @@
-# My personal set of git hooks
+# A set of useful git hooks
 
 These hooks automate some tasks with the help of git.
 
