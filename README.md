@@ -29,8 +29,8 @@ dependencies when appropriate. It assumes Composer is [globally installed][1].
 
 ### Sismo hook
 
-The post-commit hook makes [Sismo](http://sismo.sensiolabs.org/) run each time you commit.
-Make sure you configure the environment variables in your hooksrc properly.
+The post-commit hook makes [Sismo][2] run each time you commit. Make sure you
+configure the environment variables in your hooksrc properly.
 
 ### Doctrine hook
 
@@ -69,6 +69,8 @@ You can then create hooks in it. For the moment, only the following are supporte
 
 ## Source
 
-Inspired by [Tim Pope](http://tbaggery.com/)
+Inspired by [Tim Pope][3]
 
 [1]: https://github.com/composer/composer#global-installation-of-composer-manual
+[2]: http://sismo.sensiolabs.org/ "A local Continuous Testing Server"
+[3]: http://tbaggery.com
