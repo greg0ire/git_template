@@ -1,2 +1,2 @@
 #!/bin/sh
-.git/hooks/php/ctags/update-ctags >/dev/null 2>&1 &
+.git/hooks/php/ctags-develop/update-ctags >/dev/null 2>&1 &
