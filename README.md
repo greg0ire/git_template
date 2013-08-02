@@ -29,7 +29,7 @@ require this to see the tags even if fugitive is installed.
 ### Exuberant Ctags hook (patched ctags version)
 
 Same as above but uses a [patched version of ctags][6] with improved PHP language
-support. Only use one of ctags hooks at a time.
+support. Only use one of the ctags hooks at a time.
 
 ### Composer hook
 
