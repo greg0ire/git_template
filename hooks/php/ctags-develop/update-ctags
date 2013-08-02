@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Requires a patched ctags:
+# https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags
+
+set -e
+trap "rm -f .git/tags.$$" EXIT
+ctags \
+    -R
+    -f.git/tags.$$ \
+    --fields=+aimS
+    --languages=php
+
+mv .git/tags.$$ .git/tags
