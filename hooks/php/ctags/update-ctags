@@ -2,7 +2,6 @@
 
 set -e
 trap "rm -f .git/tags.$$" EXIT
-#ctags --tag-relative -Rf.git/tags.$$ --exclude=.git --languages=-javascript,sql,php
 ctags \
     -h ".php" \
     -Rf.git/tags.$$ \
@@ -14,6 +13,5 @@ ctags \
     --exclude="*.js" \
     --exclude=".svn" \
     --exclude=".git"
-    #--languages=-javascript,sql,php
 
 mv .git/tags.$$ .git/tags

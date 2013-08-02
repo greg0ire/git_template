@@ -20,9 +20,11 @@ For the moment, mostly hooks related to tools from the php ecosystem.
 
 ### Exuberant Ctags hook
 
-Updates .git/tags file by scanning the project with the ctags command. It is
+Updates `.git/tags` file by scanning the project with the ctags command. It is
 configured for a php project. To make vim look for this file in the `.git`
-directory, you can install Tim Pope's [fugitive][4].
+directory, you can install Tim Pope's [fugitive][4] or simply add
+`set tags+=.git/tags` to your .vimrc - some plugins (like [ctrlp-tjump][5])
+require this to see the tags even if fugitive is installed.
 
 ### Composer hook
 
@@ -85,3 +87,4 @@ Inspired by [Tim Pope][3]
 [2]: http://sismo.sensiolabs.org/ "A local Continuous Testing Server"
 [3]: http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
 [4]: https://github.com/tpope/vim-fugitive
+[5]: https://github.com/ivalkeen/vim-ctrlp-tjump
