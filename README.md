@@ -26,6 +26,11 @@ directory, you can install Tim Pope's [fugitive][4] or simply add
 `set tags+=.git/tags` to your .vimrc - some plugins (like [ctrlp-tjump][5])
 require this to see the tags even if fugitive is installed.
 
+### Exuberant Ctags hook (patched ctags version)
+
+Same as above but uses a [patched version of ctags][6] with improved PHP language
+support. Only use one of ctags hooks at a time.
+
 ### Composer hook
 
 This set of scripts monitor `composer.lock` changes and updates your vendor
@@ -88,3 +93,4 @@ Inspired by [Tim Pope][3]
 [3]: http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
 [4]: https://github.com/tpope/vim-fugitive
 [5]: https://github.com/ivalkeen/vim-ctrlp-tjump
+[6]: https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags
