@@ -10,6 +10,7 @@ ctags \
     --PHP-kinds=cfiv \
     --regex-PHP='/(abstract)?\s+class\s+([^ ]+)/\2/c/' \
     --regex-PHP='/interface\s+([^ ]+)/\1/i/' \
+    --exclude="app/cache/*" \
     --exclude="*.js" \
     --exclude=".svn" \
     --exclude=".git"
