@@ -86,7 +86,7 @@ variable names collisions.
 
 ## Running the test suite
 
-Get shunit in your home directory :
+Get shunit2 in your home directory :
 
     git clone git@github.com:deniscostadsc/shunit2.git
 
