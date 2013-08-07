@@ -84,6 +84,14 @@ If you need to add configuration variables in the hooksrc, you need to prefix
 them with the path to your hook, which is obviously unique. This will avoid
 variable names collisions.
 
+## Running the test suite
+
+Get shunit in your home directory :
+
+    git clone git@github.com:deniscostadsc/shunit2.git
+
+And run shell scripts in the test directory
+
 ## Source
 
 Inspired by [Tim Pope][3]
