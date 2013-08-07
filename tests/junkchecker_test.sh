@@ -2,15 +2,32 @@
 
 testIsSilentWhenCommitingSymlink()
 {
+    initRepo
+    mkdir target
+    ln -s target source
+    git add source
+    git commit -m "Let's commit a symlink" 1> /dev/null 2>${stderrF}
+    assertFalse "unexpected output to STDERR : `cat ${stderrF}`" "[ -s '${stderrF}' ]"
+}
+
+testExitsWithCodeGreaterThanZeroWhenDetectingJunk()
+{
+    initRepo
+    echo "junk" >> .git/hooks/junkchecker/junk-phrases
+    echo "junk" > someFile
+    git add someFile
+    git commit -m "Let's commit a symlink" 1> /dev/null 2>${stderrF}
+    rtrn=$?
+    assertEquals "The junkchecker didn't detect the junk" 1 $rtrn
+
+}
+
+initRepo()
+{
     cd $testRepo
-    git init .
+    git init -q .
     mv .git/hooks/hooksrc.sample .git/hooks/hooksrc
     mv .git/hooks/junkchecker/junk-phrases.sample .git/hooks/junkchecker/junk-phrases
-    mkdir target
-    ln -sv target source
-    git add source
-    git commit -m "Let's commit a symlink" 2>${stderrF}
-    assertFalse "unexpected output to STDERR : `cat ${stderrF}`" "[ -s '${stderrF}' ]"
 }
 
 oneTimeSetUp()
