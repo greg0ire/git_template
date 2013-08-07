@@ -86,7 +86,7 @@ variable names collisions.
 
 ## Running the test suite
 
-Get shunit2 in your home directory :
+Get this random [shunit2][7] fork in your home directory :
 
     git clone git@github.com:deniscostadsc/shunit2.git
 
@@ -102,3 +102,4 @@ Inspired by [Tim Pope][3]
 [4]: https://github.com/tpope/vim-fugitive
 [5]: https://github.com/ivalkeen/vim-ctrlp-tjump
 [6]: https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags
+[7]: https://code.google.com/p/shunit2/
