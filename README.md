@@ -90,7 +90,7 @@ Get shunit in your home directory :
 
     git clone git@github.com:deniscostadsc/shunit2.git
 
-And run shell scripts in the test directory
+And run shell scripts in the `tests` directory
 
 ## Source
 
