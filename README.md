@@ -86,7 +86,7 @@ variable names collisions.
 
 ## Running the test suite
 
-Get this random [shunit2][7] fork in your home directory :
+Get this random [shunit2][7] fork in ~/src :
 
     git clone git@github.com:deniscostadsc/shunit2.git
 
