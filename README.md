@@ -92,7 +92,7 @@ Get this random [shunit2][7] fork in your home directory :
 
 And run shell scripts in the `tests` directory
 
-## Source
+## Credits
 
 Inspired by [Tim Pope][3]
 
