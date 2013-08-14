@@ -38,7 +38,7 @@ oneTimeSetUp()
     stderrF="${outputDir}/stderr"
 
     testRepo=$SHUNIT_TMPDIR/test_repo
-    mkdir -p $testRepo 
+    mkdir -p $testRepo
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
