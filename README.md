@@ -91,7 +91,7 @@ Get this random [shunit2][7] fork in ~/src :
 
     git clone git@github.com:deniscostadsc/shunit2.git
 
-And run shell scripts in the `tests` directory
+and run `tests/all.sh`.
 
 ## Credits
 
