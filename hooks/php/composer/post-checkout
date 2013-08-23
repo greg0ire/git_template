@@ -8,7 +8,7 @@ then
         echo "composer.lock has changed!"
         composer install --dev
     fi
-    
+
     if [ ! -d vendor ]
     then
         composer install --dev
