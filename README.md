@@ -34,7 +34,8 @@ support. Only use one of the ctags hooks at a time.
 ### Composer hook
 
 This set of scripts monitor `composer.lock` changes and updates your vendor
-dependencies when appropriate. It assumes Composer is [globally installed][1].
+dependencies when appropriate. Additionally, it checks composer.json for
+validity on pre-commit. It assumes Composer is [globally installed][1].
 
 ### Sismo hook
 
