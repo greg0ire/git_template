@@ -6,7 +6,7 @@ then
     do
         if [ -f .git/hooks/$enabled_plugin/post-checkout ]
         then
-            . .git/hooks/$enabled_plugin/post-checkout
+            .git/hooks/$enabled_plugin/post-checkout $1 $2
         fi
     done
 fi

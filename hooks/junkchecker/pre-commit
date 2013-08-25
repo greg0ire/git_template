@@ -1,4 +1,5 @@
 #!/bin/bash
+. .git/hooks/git_config_wrapper.sh
 get_hook_required_config junkchecker phrasesfile junkchecker_phrases_file
 if [ -f $junkchecker_phrases_file ]
 then

@@ -6,7 +6,7 @@ then
     do
         if [ -f .git/hooks/$enabled_plugin/post-commit ]
         then
-            . .git/hooks/$enabled_plugin/post-commit
+            .git/hooks/$enabled_plugin/post-commit
         fi
     done
 fi

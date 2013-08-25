@@ -7,7 +7,7 @@ then
     do
         if [ -f .git/hooks/$enabled_plugin/pre-commit ]
         then
-            . .git/hooks/$enabled_plugin/pre-commit
+            .git/hooks/$enabled_plugin/pre-commit
             if [ $? -ne 0 ]
             then
                 exit 1
