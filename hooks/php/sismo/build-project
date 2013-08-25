@@ -1,8 +1,5 @@
 #!/bin/sh
-if [ $php_sismo_slug == "putYourSismoProjectSlugHere" ]
-then
-    echo "Looks like you forgot to configure your sismo project slug"
-    exit 2
-fi
+get_hook_required_config sismo php-sismo-path php_sismo_path
+get_hook_required_config sismo php-sismo-slug php_sismo_slug
 
 php $php_sismo_path --quiet build $php_sismo_slug `git log -1 HEAD --pretty="%H"` &
