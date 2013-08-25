@@ -1,18 +1,13 @@
 #!/bin/bash
-. .git/hooks/git_config_wrapper.sh
-if [ -f .git/hooks/hooksrc ]
-then
-    . .git/hooks/hooksrc
-    for enabled_plugin in "${plugins[@]}"
-    do
-        if [ -f .git/hooks/$enabled_plugin/pre-commit ]
+for enabled_plugin in `git config --get-all hooks.enabled-plugins`
+do
+    if [ -f .git/hooks/$enabled_plugin/pre-commit ]
+    then
+        .git/hooks/$enabled_plugin/pre-commit
+        if [ $? -ne 0 ]
         then
-            .git/hooks/$enabled_plugin/pre-commit
-            if [ $? -ne 0 ]
-            then
-                exit 1
-            fi
+            exit 1
         fi
-    done
-fi
+    fi
+done
 

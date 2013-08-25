@@ -1,12 +1,8 @@
 #!/bin/bash
-if [ -f .git/hooks/hooksrc ]
-then
-    . .git/hooks/hooksrc
-    for enabled_plugin in "${plugins[@]}"
-    do
-        if [ -f .git/hooks/$enabled_plugin/post-commit ]
-        then
-            .git/hooks/$enabled_plugin/post-commit
-        fi
-    done
-fi
+for enabled_plugin in `git config --get-all hooks.enabled-plugins`
+do
+    if [ -f .git/hooks/$enabled_plugin/post-commit ]
+    then
+        .git/hooks/$enabled_plugin/post-commit
+    fi
+done

@@ -39,10 +39,20 @@ validity on pre-commit. It assumes Composer is [globally installed][1].
 
 ### Sismo hook
 
-The post-commit hook makes [Sismo][2] run each time you commit. Make sure you
-configure the environment variables in your hooksrc properly. It is a post-commit
+The post-commit hook makes [Sismo][2] run each time you commit. It is a post-commit
 hook because Sismo is a *local* Continuous Testing Server, which means you can
 build before you push.
+
+ou must configure the path to the sismo executable, and you may do so globally,
+like this:
+
+    git config --global --add hooks.php-sismo.path /usr/share/nginx/sismo.php
+
+You must also configure the slug of your project:
+
+    git config --add hooks.php-sismo.slug my-slug
+
+Don't forget to enable the plugin if you want to use it.
 
 ### Doctrine hook
 
@@ -63,12 +73,15 @@ This hook is language-agnostic.
 
 ## Usage
 
-Start by creating your hooksrc file:
+By default, no hook will run. You must configure the hooks you need:
 
-    mv .git/hooks/hooksrc.sample .git/hooks/hookrc
+    git config hooks.enabled-plugins php/composer
+    git config --add hooks.enabled-plugins php/ctags
+    git config --add hooks.enabled-plugins junkchecker
 
-Then edit it to add plugins you wish to activate. The sample file contains the
-ctags and composer hooks by default.
+If you want to enable a plugin on every project, use the `--global` option:
+
+    git config --global --add hooks.enabled-plugins some_plugin
 
 ## Contributing
 
@@ -81,9 +94,9 @@ You can then create hooks in it. For the moment, only the following are supporte
 * post-merge
 * post-rewrite
 
-If you need to add configuration variables in the hooksrc, you need to prefix
+If you need to add configuration variables git configuration, you should prefix
 them with the path to your hook, which is obviously unique. This will avoid
-variable names collisions.
+collisions.
 
 ## Running the test suite
 
