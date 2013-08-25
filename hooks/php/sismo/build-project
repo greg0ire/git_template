@@ -1,5 +1,12 @@
 #!/bin/sh
-get_hook_required_config sismo php-sismo-path php_sismo_path
-get_hook_required_config sismo php-sismo-slug php_sismo_slug
+. .git/hooks/git_config_wrapper.sh
+get_hook_required_config php-sismo path php_sismo_path
+path_is_defined=$?
+get_hook_required_config php-sismo slug php_sismo_slug
+slug_is_defined=$?
+if [ $path_is_defined -ne 0 -o $slug_is_defined -ne 0 ]
+then
+    exit 1
+fi
 
 php $php_sismo_path --quiet build $php_sismo_slug `git log -1 HEAD --pretty="%H"` &
