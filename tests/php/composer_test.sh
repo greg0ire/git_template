@@ -24,7 +24,7 @@ initRepo()
 {
     cd $testRepo
     git init -q .
-    echo "plugins=(php/composer)" > .git/hooks/hooksrc
+    git config hooks.enabled-plugins php/composer
 }
 
 oneTimeSetUp()

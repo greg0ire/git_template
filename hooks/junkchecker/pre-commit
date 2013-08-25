@@ -23,6 +23,6 @@ then
         fi
     done
 else
-    echo "Could not find file $junkchecker_phrases_file . Please check your hooksrc."
+    echo "Could not find file $junkchecker_phrases_file . Please check your configuration."
     exit 2
 fi
