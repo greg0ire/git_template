@@ -26,8 +26,8 @@ initRepo()
 {
     cd $testRepo
     git init -q .
-    mv .git/hooks/hooksrc.sample .git/hooks/hooksrc
     mv .git/hooks/junkchecker/junk-phrases.sample .git/hooks/junkchecker/junk-phrases
+    git config hooks.enabled-plugins junkchecker
     git config hooks.junkchecker.phrasesfile .git/hooks/junkchecker/junk-phrases
 }
 
