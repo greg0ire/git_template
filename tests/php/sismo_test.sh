@@ -12,6 +12,7 @@ testIsRunOnCommit()
     echo "a" > someFile
     git add someFile
     git commit -qm "Let's commit some file"
+    sleep 1
     assertTrue 'Sismo was not run at all' "[ -f ${SHUNIT_TMPDIR}/phpWasRun ]"
     assertEquals 'Sismo was not run properly' \
         "/some/path --quiet build some-slug" \
