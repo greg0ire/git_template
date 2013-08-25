@@ -24,9 +24,10 @@ testRunsComposerOnComposerLockCheckoutChange()
 {
     composer()
     {
-        echo $1 > /tmp/composerWasRun
+        echo $1 > "${SHUNIT_TMPDIR}/composerWasRun"
     }
     export -f composer
+    export SHUNIT_TMPDIR
     initRepo
     echo "a" > composer.lock
     git add composer.lock
@@ -35,7 +36,7 @@ testRunsComposerOnComposerLockCheckoutChange()
     git add composer.lock
     git commit -qm "second version of composer.lock"
     git checkout -q HEAD^
-    assertTrue 'Composer was not run' "[ `cat /tmp/composerWasRun` == "install" ]"
+    assertTrue 'Composer was not run' "[ `cat ${SHUNIT_TMPDIR}/composerWasRun` == "install" ]"
 }
 
 initRepo()
