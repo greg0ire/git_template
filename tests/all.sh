@@ -1,6 +1,6 @@
 #!/bin/bash
 cd "$( dirname "$0" )"
-for script in *
+for script in * php/*
 do
     if [ $script != "$( basename "$0" )" -a -f $script ]
     then
@@ -8,8 +8,4 @@ do
         echo "----------------------"
         echo "  "
     fi
-done
-for script in php/*.sh
-do
-    ./$script
 done
