@@ -9,4 +9,7 @@ do
         echo "  "
     fi
 done
-*/*.sh
+for script in php/*.sh
+do
+    ./$script
+done
