@@ -2,7 +2,7 @@
 cd "$( dirname "$0" )"
 for script in *
 do
-    if [ $script != "$( basename "$0" )" ]
+    if [ $script != "$( basename "$0" )" -a -f $script ]
     then
         ./$script
     fi
