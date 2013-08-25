@@ -16,7 +16,7 @@ testExitsWithCodeGreaterThanZeroWhenDetectingJunk()
     echo "junk" >> .git/hooks/junkchecker/junk-phrases
     echo "junk" > someFile
     git add someFile
-    git commit -m "Let's commit a symlink" 1> /dev/null 2>${stderrF}
+    git commit -m "Let's commit something we shouldn't" 1> /dev/null 2>${stderrF}
     rtrn=$?
     assertEquals "The junkchecker didn't detect the junk" 1 $rtrn
 
