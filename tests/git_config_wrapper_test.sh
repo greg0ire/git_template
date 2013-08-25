@@ -3,13 +3,13 @@
 
 testReturns2WhenKeyIsNotSet()
 {
-    get_hook_required_config not configured result_var > /dev/null
+    get_hook_required_config not configured result_var 2> /dev/null
     assertEquals "2 should be returned on key not set" 2 $?
 }
 
 testReturns1WhenMisused()
 {
-    get_hook_required_config missing argument > /dev/null
+    get_hook_required_config missing argument 2> /dev/null
     assertEquals "1 should be returned on key not set" 1 $?
 }
 
