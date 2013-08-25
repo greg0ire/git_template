@@ -20,13 +20,13 @@ testExitsWithCodeGreaterThanZeroWhenComposerJsonIsInvalid()
 
 }
 
-composer()
-{
-    touch /tmp/composerWasRun
-}
-
 testRunsComposerOnComposerLockCheckoutChange()
 {
+    composer()
+    {
+        echo $1 > /tmp/composerWasRun
+    }
+    export -f composer
     initRepo
     echo "a" > composer.lock
     git add composer.lock
@@ -34,12 +34,15 @@ testRunsComposerOnComposerLockCheckoutChange()
     echo "b" > composer.lock
     git add composer.lock
     git commit -qm "second version of composer.lock"
+    git checkout -q HEAD^
+    assertTrue 'Composer was not run' "[ `cat /tmp/composerWasRun` == "install" ]"
 }
 
 initRepo()
 {
     cd $testRepo
-    rm -rf .git && git init -q .
+    rm -rf .git
+    git init -q .
     git config hooks.enabled-plugins php/composer
 }
 
