@@ -1,5 +1,5 @@
 #!/bin/bash
-
+get_hook_required_config junkchecker phrasesfile junkchecker_phrases_file
 if [ -f $junkchecker_phrases_file ]
 then
     if git-rev-parse --verify HEAD >/dev/null 2>&1; then

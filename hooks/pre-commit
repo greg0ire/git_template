@@ -1,4 +1,5 @@
 #!/bin/bash
+. .git/hooks/git_config_wrapper.sh
 if [ -f .git/hooks/hooksrc ]
 then
     . .git/hooks/hooksrc

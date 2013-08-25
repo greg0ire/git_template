@@ -4,5 +4,3 @@ plugins=(php/{ctags,composer} junkchecker)
 
 php_sismo_path=/usr/share/nginx/html/sismo.php
 php_sismo_slug=putYourSismoProjectSlugHere
-
-junkchecker_phrases_file=.git/hooks/junkchecker/junk-phrases
