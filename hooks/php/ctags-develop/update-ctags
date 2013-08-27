@@ -15,6 +15,9 @@ ctags \
     --exclude="app/cache/*" \
     --exclude="*.js" \
     --exclude=".svn" \
-    --exclude=".git"
+    --exclude=".git" \
+    --exclude="vendor/*/vendor" \
+    --exclude="vendor/*/Tests"
+
 
 mv .git/tags.$$ .git/tags
