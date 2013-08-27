@@ -12,7 +12,6 @@ ctags \
     --totals=yes \
     --tag-relative=yes \
     --PHP-kinds=cfiv \
-    --regex-PHP='/(abstract)?\s+class\s+([^ ]+)/\2/c/' \
     --exclude="app/cache/*" \
     --exclude="*.js" \
     --exclude=".svn" \
