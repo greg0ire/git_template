@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Requires a patched ctags:
 # https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags

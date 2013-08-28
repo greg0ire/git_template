@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 trap "rm -f .git/tags.$$" EXIT

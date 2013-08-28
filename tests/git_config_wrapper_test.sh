@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 . `dirname $0`/../hooks/git_config_wrapper.sh
 
 testReturns2WhenKeyIsNotSet()
