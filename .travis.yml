@@ -1,6 +1,7 @@
 language: c # because there was nothing suitable
 install:
   - "mkdir ~/src"
+  - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   - "git clone git@github.com:deniscostadsc/shunit2.git ~/src"
 script:
   - "tests/all.sh"
