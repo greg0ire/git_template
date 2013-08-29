@@ -1,6 +1,8 @@
 language: c # because there was nothing suitable
 install:
   - git config --global init.templatedir "`pwd`"
+  - git config --global user.email "travis@mailinator.com"
+  - git config --global user.name "Travis Bot"
   - "mkdir -p ~/src/shunit2"
   - "git clone git://github.com/deniscostadsc/shunit2.git ~/src/shunit2"
 script:
