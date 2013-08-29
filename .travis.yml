@@ -1,6 +1,6 @@
 language: c # because there was nothing suitable
 install:
   - "mkdir -p ~/src/shunit2"
-  - "git clone git://github.com/deniscostadsc/shunit2.git ~/src"
+  - "git clone git://github.com/deniscostadsc/shunit2.git ~/src/shunit2"
 script:
   - "tests/all.sh"
