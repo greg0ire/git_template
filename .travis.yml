@@ -2,6 +2,7 @@ language: php # that way we get composer
 php:
   - 5.4
 install:
+  - composer self-update
   - git config --global init.templatedir "`pwd`"
   - git config --global user.email "travis@mailinator.com"
   - git config --global user.name "Travis Bot"
