@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Requires a patched ctags:
 # https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags
@@ -12,10 +12,12 @@ ctags \
     --totals=yes \
     --tag-relative=yes \
     --PHP-kinds=cfiv \
-    --regex-PHP='/(abstract)?\s+class\s+([^ ]+)/\2/c/' \
     --exclude="app/cache/*" \
     --exclude="*.js" \
     --exclude=".svn" \
-    --exclude=".git"
+    --exclude=".git" \
+    --exclude="vendor/*/vendor" \
+    --exclude="vendor/*/Tests"
+
 
 mv .git/tags.$$ .git/tags

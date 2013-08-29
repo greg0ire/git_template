@@ -1,2 +1,2 @@
-#!/bin/sh
+#!/bin/bash
 .git/hooks/php/doctrine/update-schema
