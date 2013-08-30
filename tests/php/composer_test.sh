@@ -2,7 +2,6 @@
 testExistsWithCodeEqualToZeroWhenComposerJsonIsValid()
 {
     initRepo
-    composer init -n --name="awesome/project" --description="elaborate description"
     echo '{
     "name": "awesome/project",
     "description": "elaborate description",
