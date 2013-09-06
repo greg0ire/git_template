@@ -22,6 +22,21 @@ testExitsWithCodeGreaterThanZeroWhenDetectingJunk()
 
 }
 
+testExitsWithCodeEqualToZeroWhenJunkIsNotInTheStagingArea()
+{
+    initRepo
+    echo "junk" >> .git/hooks/junkchecker/junk-phrases
+    echo "test" > someFile
+    git add someFile
+    git commit -m "Let's commit a first file" 1> /dev/null 2>${stderrF}
+    echo "test" > someOtherFile
+    echo "junk" > someFile
+    git add someOtherFile
+    git commit -m "Let's commit something perfectly ok" 1> /dev/null 2>${stderrF}
+    rtrn=$?
+    assertEquals "The junkchecker should be ok with this commit" 0 $rtrn
+}
+
 initRepo()
 {
     cd $testRepo
