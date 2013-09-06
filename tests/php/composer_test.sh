@@ -2,7 +2,13 @@
 testExistsWithCodeEqualToZeroWhenComposerJsonIsValid()
 {
     initRepo
-    composer init -n --name="awesome/project" --description="elaborate description"
+    echo '{
+    "name": "awesome/project",
+    "description": "elaborate description",
+    "require": {
+
+    }
+}' > composer.json
     git add composer.json
     git commit -m "Let's commit a the composer.json" 1> /dev/null 2>${stderrF}
     rtrn=$?
