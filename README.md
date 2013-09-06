@@ -26,16 +26,29 @@ directory, you can install Tim Pope's [fugitive][4] or simply add
 `set tags+=.git/tags` to your .vimrc - some plugins (like [ctrlp-tjump][5])
 require this to see the tags even if fugitive is installed.
 
+Enable it :
+
+    git config --add hooks.enabled-plugins php/ctags
+
 ### Exuberant Ctags hook (patched ctags version)
 
 Same as above but uses a [patched version of ctags][6] with improved PHP language
 support. Only use one of the ctags hooks at a time.
+
+Enable it :
+
+    git config --add hooks.enabled-plugins php/ctags-develop
+
 
 ### Composer hook
 
 This set of scripts monitor `composer.lock` changes and updates your vendor
 dependencies when appropriate. Additionally, it checks composer.json for
 validity on pre-commit. It assumes Composer is [globally installed][1].
+
+Enable it :
+
+    git config --add hooks.enabled-plugins php/composer
 
 ### Sismo hook
 
@@ -46,19 +59,25 @@ build before you push.
 ou must configure the path to the sismo executable, and you may do so globally,
 like this:
 
-    git config --global hooks.php-sismo.path /usr/share/nginx/html/sismo.php
+    git config --global --add hooks.php-sismo.path /usr/share/nginx/html/sismo.php
 
 You must also configure the slug of your project:
 
     git config hooks.php-sismo.slug my-slug
 
-Don't forget to enable the plugin if you want to use it.
+Enable it :
+
+    git config --add hooks.enabled-plugins php/sismo
 
 ### Doctrine hook
 
 This hooks runs the `doctrine:schema:validate` task of a Symfony project and
 updates / migrates your database depending on the presence of a
 `doctrine-migrations` folder in your vendor directory.
+
+Enable it :
+
+    git config --add hooks.enabled-plugins php/doctrine
 
 ### Junk checker hook
 
@@ -77,6 +96,9 @@ use it like this :
 
     git config [--global] hooks.junkchecker.phrasesfile .git/hooks/junkchecker/junk-phrases.sample
 
+Enable it :
+
+    git config --add hooks.enabled-plugins junkchecker
 
 ## Usage
 
