@@ -46,7 +46,7 @@ build before you push.
 ou must configure the path to the sismo executable, and you may do so globally,
 like this:
 
-    git config --global hooks.php-sismo.path /usr/share/nginx/sismo.php
+    git config --global hooks.php-sismo.path /usr/share/nginx/html/sismo.php
 
 You must also configure the slug of your project:
 
