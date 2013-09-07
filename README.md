@@ -115,6 +115,23 @@ If you want to enable a plugin on every project, use the `--global` option:
 
     git config --global --add hooks.enabled-plugins some_plugin
 
+## Updating
+
+To get updates you need to update your template directory first :
+
+    # Go to your template directory (probably ~/.git_template)
+    eval cd $(git config --get init.templatedir)
+    git pull
+
+Then, you can update any repository by running this in the working tree of your
+repository :
+
+    eval $(git config --get init.templatedir)/update.sh
+    # If your template directory is ~/.git_template, this is equivalent to :
+    ~/.git_template/update.sh
+
+Make sure you have rsync installed.
+
 ## Contributing
 
 Creating your php plugin is as easy as creating a php folder under `hooks/php`.
