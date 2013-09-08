@@ -30,14 +30,8 @@ Enable it :
 
     git config --add hooks.enabled-plugins php/ctags
 
-### Exuberant Ctags hook (patched ctags version)
-
-Same as above but uses a [patched version of ctags][6] with improved PHP language
-support. Only use one of the ctags hooks at a time.
-
-Enable it :
-
-    git config --add hooks.enabled-plugins php/ctags-develop
+If you want improved PHP languages support, install the [patched version of ctags][6]
+support.
 
 
 ### Composer hook

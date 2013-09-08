@@ -1,20 +1,42 @@
-#!/bin/bash
+#!/bin/bash -ux
 
 set -e
 trap "rm -f .git/tags.$$" EXIT
-ctags \
-	-h ".php" \
-	-Rf.git/tags.$$ \
-	--totals=yes \
-	--tag-relative=yes \
-	--PHP-kinds=cfiv \
-	--regex-PHP='/(abstract)?\s+class\s+([^ ]+)/\2/c/' \
-	--regex-PHP='/interface\s+([^ ]+)/\1/i/' \
-	--exclude="app/cache/*" \
-	--exclude="*.js" \
-	--exclude=".svn" \
-	--exclude=".git" \
-	--exclude="vendor/*/vendor" \
-	--exclude="vendor/*/Tests"
+new_flags_are_supported()
+{
+	ctags --help|grep ' fields'|cut -d '"' -f2|grep a|grep i|grep m|grep S
+}
+
+build_ctags_command()
+{
+	local command=$(cat <<-EOT
+		ctags
+			-h ".php"
+			-Rf.git/tags.$$
+			--languages=php
+			--totals=yes
+			--tag-relative=yes
+			--PHP-kinds=cfiv
+			--exclude="app/cache/*"
+			--exclude="*.js"
+			--exclude=".svn"
+			--exclude=".git"
+			--exclude="vendor/*/vendor"
+			--exclude="vendor/*/Tests"''
+		EOT
+		)
+	if [ new_flags_are_supported ]
+	then
+		command="${command} --fields=+aimS"
+	else
+		command="$command $(cat <<- OLD_FLAGS
+			--regex-PHP='/(abstract)?\s+class\s+([^ ]+)/\2/c/'
+			--regex-PHP='/interface\s+([^ ]+)/\1/i/'
+			OLD_FLAGS
+			)"
+	fi
+	eval $command
+}
+build_ctags_command
 
 mv .git/tags.$$ .git/tags
