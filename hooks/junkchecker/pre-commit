@@ -3,26 +3,26 @@
 get_hook_required_config junkchecker phrasesfile junkchecker_phrases_file
 if [ -f $junkchecker_phrases_file ]
 then
-    if git-rev-parse --verify HEAD >/dev/null 2>&1; then
-        against=HEAD
-    else
-        against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
-    fi
+	if git-rev-parse --verify HEAD >/dev/null 2>&1; then
+		against=HEAD
+	else
+		against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
+	fi
 
-    for FILE in `git diff-index --cached --name-status $against -- | cut -c3-`; do
-        if [ -f $FILE ]
-        then
-            for PHRASE in `cat $junkchecker_phrases_file`; do
-                git diff --cached $FILE | grep -q $PHRASE
-                if [ $? -eq 0 ]
-                then
-                    echo "Junk checker detected: $FILE contains '$PHRASE'" >&2
-                    exit 1
-                fi
-            done
-        fi
-    done
+	for FILE in `git diff-index --cached --name-status $against -- | cut -c3-`; do
+		if [ -f $FILE ]
+		then
+			for PHRASE in `cat $junkchecker_phrases_file`; do
+				git diff --cached $FILE | grep -q $PHRASE
+				if [ $? -eq 0 ]
+				then
+					echo "Junk checker detected: $FILE contains '$PHRASE'" >&2
+					exit 1
+				fi
+			done
+		fi
+	done
 else
-    echo "Could not find file $junkchecker_phrases_file . Please check your configuration."
-    exit 2
+	echo "Could not find file $junkchecker_phrases_file . Please check your configuration."
+	exit 2
 fi

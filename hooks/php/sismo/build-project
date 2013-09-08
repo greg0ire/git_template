@@ -6,7 +6,7 @@ get_hook_required_config php-sismo slug slug
 slug_is_defined=$?
 if [ $path_is_defined -ne 0 -o $slug_is_defined -ne 0 ]
 then
-    exit 1
+	exit 1
 fi
 
 php $path --quiet build $slug `git log -1 HEAD --pretty="%H"` &

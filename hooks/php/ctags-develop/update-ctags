@@ -6,18 +6,18 @@
 set -e
 trap "rm -f .git/tags.$$" EXIT
 ctags \
-    -Rf.git/tags.$$ \
-    --fields=+aimS \
-    --languages=php \
-    --totals=yes \
-    --tag-relative=yes \
-    --PHP-kinds=cfiv \
-    --exclude="app/cache/*" \
-    --exclude="*.js" \
-    --exclude=".svn" \
-    --exclude=".git" \
-    --exclude="vendor/*/vendor" \
-    --exclude="vendor/*/Tests"
+	-Rf.git/tags.$$ \
+	--fields=+aimS \
+	--languages=php \
+	--totals=yes \
+	--tag-relative=yes \
+	--PHP-kinds=cfiv \
+	--exclude="app/cache/*" \
+	--exclude="*.js" \
+	--exclude=".svn" \
+	--exclude=".git" \
+	--exclude="vendor/*/vendor" \
+	--exclude="vendor/*/Tests"
 
 
 mv .git/tags.$$ .git/tags
