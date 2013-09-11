@@ -30,6 +30,17 @@ Enable it :
 
     git config --add hooks.enabled-plugins php/ctags
 
+Optionally, you can set the projectType configuration, like this
+
+    git config hooks.php-ctags.project-type projectType
+
+Supported project types :
+
+    - symfony1
+    - symfony2
+
+This will make ctags ignore cache directories.
+
 If you want improved PHP languages support, install the [patched version of ctags][6]
 support.
 
