@@ -15,7 +15,6 @@ build_ctags_command()
 			--totals=yes
 			--tag-relative=yes
 			--PHP-kinds=cfiv
-			--exclude="app/cache/*"
 			--exclude="*.js"
 			--exclude=".svn"
 			--exclude=".git"
@@ -32,6 +31,21 @@ build_ctags_command()
 			--regex-PHP='/interface\s+([^ ]+)/\1/i/'
 			OLD_FLAGS
 			)"
+	fi
+	local projectType
+	if [ get_hook_config php-ctags project-type projectType ]
+	then
+		case projectType in
+			symfony2)
+				--exclude="app/cache/*"
+			;;
+			symfony1)
+				--exclude="cache/*"
+			;;
+			*)
+				echo "Unsupported project type $projectType" >&2
+			;;
+		esac
 	fi
 	eval $command
 }
