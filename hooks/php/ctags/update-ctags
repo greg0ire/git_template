@@ -48,7 +48,6 @@ build_ctags_command()
 			;;
 		esac
 	fi
-	echo $command > /tmp/command
 	eval $command
 }
 
