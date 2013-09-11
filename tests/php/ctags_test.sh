@@ -26,11 +26,16 @@ testTagsFileWorksWithSymfony1()
 testTagsFileWorksWithSymfony2()
 {
 	git config hooks.php-ctags.project-type symfony2
+	echo '<?php $indexMe = 42;' > foo.php
+	mkdir -p app/cache
+	echo '<?php $doNotIndexMe = 42;' > app/cache/bar.php
 	touch foo
 	git add foo
 	git commit -qm "foo file"
 	sleep 1 # ctags is run in the background. Wait for it.
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
+	assertTrue '$indexMe was not found' "grep indexMe .git/tags"
+	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
 }
 
 
