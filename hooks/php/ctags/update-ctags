@@ -37,10 +37,10 @@ build_ctags_command()
 	then
 		case projectType in
 			symfony2)
-				--exclude="app/cache/*"
+				command=$command --exclude="app/cache/*"
 			;;
 			symfony1)
-				--exclude="cache/*"
+				command=$command --exclude="cache/*"
 			;;
 			*)
 				echo "Unsupported project type $projectType" >&2

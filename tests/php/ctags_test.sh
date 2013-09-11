@@ -9,6 +9,31 @@ testTagsFileIsGeneratedOnCommit()
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
 }
 
+testTagsFileWorksWithSymfony1()
+{
+	rm -rf .git
+	initRepo
+	git config hooks.php-ctags.project-type symfony1
+	touch foo
+	git add foo
+	git commit -qm "foo file"
+	sleep 1 # ctags is run in the background. Wait for it.
+	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
+}
+
+testTagsFileWorksWithSymfony2()
+{
+	rm -rf .git
+	initRepo
+	git config hooks.php-ctags.project-type symfony2
+	touch foo
+	git add foo
+	git commit -qm "foo file"
+	sleep 1 # ctags is run in the background. Wait for it.
+	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
+}
+
+
 
 initRepo()
 {
