@@ -1,4 +1,5 @@
-#!/bin/bash -eux
+#!/bin/bash -eu
+source .git/hooks/git_config_wrapper.sh
 
 new_flags_are_supported()
 {
