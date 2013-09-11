@@ -20,7 +20,7 @@ testTagsFileWorksWithSymfony1()
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
 	assertTrue "\$indexMe was not found here : `cat .git/tags`" "grep indexMe .git/tags"
 	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
-	.git/hooks/php/ctags/update-ctags
+	bash -eux .git/hooks/php/ctags/update-ctags
 }
 
 testTagsFileWorksWithSymfony2()
