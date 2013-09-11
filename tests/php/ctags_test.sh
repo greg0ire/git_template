@@ -14,8 +14,7 @@ testTagsFileWorksWithSymfony1()
 	echo '<?php $indexMe = 42;' > foo.php
 	mkdir cache
 	echo '<?php $doNotIndexMe = 42;' > cache/bar.php
-	touch foo
-	git add foo
+	git add foo.php
 	git commit -qm "foo file"
 	sleep 1 # ctags is run in the background. Wait for it.
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
@@ -30,8 +29,7 @@ testTagsFileWorksWithSymfony2()
 	echo '<?php $indexMe = 42;' > foo.php
 	mkdir -p app/cache
 	echo '<?php $doNotIndexMe = 42;' > app/cache/bar.php
-	touch foo
-	git add foo
+	git add foo.php
 	git commit -qm "foo file"
 	sleep 1 # ctags is run in the background. Wait for it.
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
