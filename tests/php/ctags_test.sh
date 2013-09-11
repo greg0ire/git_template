@@ -21,6 +21,7 @@ testTagsFileWorksWithSymfony1()
 	assertTrue "\$indexMe was not found here : `cat .git/tags`" "grep indexMe .git/tags"
 	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
 	bash -eux .git/hooks/php/ctags/update-ctags
+	ls -R
 }
 
 testTagsFileWorksWithSymfony2()
