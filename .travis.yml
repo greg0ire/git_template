@@ -10,8 +10,8 @@ install:
   - "sudo apt-get install subversion"
   - "svn checkout https://svn.code.sf.net/p/ctags/code/trunk ctags-trunk"
   - "cd ctags-trunk"
-  - wget https://gist.github.com/complex857/5693196/raw/14a770b436b5116eb22ec65492d8c0e8a4271210/0000-PHP-parser-rewrite-full-string-parameters.patch
-  - svn patch 0000-PHP-parser-rewrite-full-string-parameters.patch
+  - wget http://sourceforge.net/p/ctags/patches/_discuss/thread/3a930d9f/1405/attachment/0000-PHP-parser-rewrite.patch
+  - patch -p1 < 0000-PHP-parser-rewrite.patch
   - autoconf
   - autoheader
   - ./configure
