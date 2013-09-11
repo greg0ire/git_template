@@ -1,7 +1,6 @@
 #!/bin/sh
 testTagsFileIsGeneratedOnCommit()
 {
-	initRepo
 	touch foo
 	git add foo
 	git commit -qm "foo file"
@@ -11,8 +10,6 @@ testTagsFileIsGeneratedOnCommit()
 
 testTagsFileWorksWithSymfony1()
 {
-	rm -rf .git
-	initRepo
 	git config hooks.php-ctags.project-type symfony1
 	touch foo
 	git add foo
@@ -23,8 +20,6 @@ testTagsFileWorksWithSymfony1()
 
 testTagsFileWorksWithSymfony2()
 {
-	rm -rf .git
-	initRepo
 	git config hooks.php-ctags.project-type symfony2
 	touch foo
 	git add foo
@@ -37,9 +32,16 @@ testTagsFileWorksWithSymfony2()
 
 initRepo()
 {
+	rm -rf $testRepo
+	mkdir $testRepo
 	cd $testRepo
 	git init -q .
 	git config hooks.enabled-plugins php/ctags
+}
+
+setUp()
+{
+	initRepo
 }
 
 oneTimeSetUp()
