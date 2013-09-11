@@ -19,7 +19,7 @@ testTagsFileWorksWithSymfony1()
 	git commit -qm "foo file"
 	sleep 1 # ctags is run in the background. Wait for it.
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
-	assertTrue '$indexMe was not found' "grep indexMe .git/tags"
+	assertTrue "\$indexMe was not found here : `cat .git/tags`" "grep indexMe .git/tags"
 	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
 }
 
@@ -34,7 +34,7 @@ testTagsFileWorksWithSymfony2()
 	git commit -qm "foo file"
 	sleep 1 # ctags is run in the background. Wait for it.
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
-	assertTrue '$indexMe was not found' "grep indexMe .git/tags"
+	assertTrue "\$indexMe was not found here : `cat .git/tags`" "grep indexMe .git/tags"
 	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
 }
 
