@@ -9,6 +9,6 @@ main()
         echo "This script is supposed to be run at the root of a git repository" >&2
     fi
     rsync -avzC $PROGDIR/hooks/ .git/hooks --delete
-    rsync -avzC --exclude="update.sh" $PROGDIR/ .git
+    rsync -avzC --exclude="update.sh" --exclude="tests" $PROGDIR/ .git
 }
 main
