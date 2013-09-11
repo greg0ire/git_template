@@ -1,13 +1,13 @@
 #!/bin/bash
 for enabled_plugin in `git config --get-all hooks.enabled-plugins`
 do
-    if [ -f .git/hooks/$enabled_plugin/pre-commit ]
-    then
-        .git/hooks/$enabled_plugin/pre-commit
-        if [ $? -ne 0 ]
-        then
-            exit 1
-        fi
-    fi
+	if [ -f .git/hooks/$enabled_plugin/pre-commit ]
+	then
+		.git/hooks/$enabled_plugin/pre-commit
+		if [ $? -ne 0 ]
+		then
+			exit 1
+		fi
+	fi
 done
 

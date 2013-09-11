@@ -1,8 +1,8 @@
 #!/bin/bash
 for enabled_plugin in `git config --get-all hooks.enabled-plugins`
 do
-    if [ -f .git/hooks/$enabled_plugin/post-checkout ]
-    then
-        .git/hooks/$enabled_plugin/post-checkout $1 $2
-    fi
+	if [ -f .git/hooks/$enabled_plugin/post-checkout ]
+	then
+		.git/hooks/$enabled_plugin/post-checkout $1 $2
+	fi
 done
