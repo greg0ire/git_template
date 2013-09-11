@@ -1,6 +1,6 @@
 #!/bin/bash
 . .git/hooks/git_config_wrapper.sh
-get_hook_required_config junkchecker phrasesfile junkchecker_phrases_file
+get_hook_config junkchecker phrasesfile junkchecker_phrases_file required
 if [ -f $junkchecker_phrases_file ]
 then
 	if git-rev-parse --verify HEAD >/dev/null 2>&1; then

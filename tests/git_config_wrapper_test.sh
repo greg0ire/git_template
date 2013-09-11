@@ -3,13 +3,13 @@
 
 testReturns2WhenKeyIsNotSet()
 {
-	get_hook_required_config not configured result_var 2> /dev/null
+	get_hook_config not configured result_var required 2> /dev/null
 	assertEquals "2 should be returned on key not set" 2 $?
 }
 
 testReturns1WhenMisused()
 {
-	get_hook_required_config missing argument 2> /dev/null
+	get_hook_config missing argument required 2> /dev/null
 	assertEquals "1 should be returned on key not set" 1 $?
 }
 
@@ -17,7 +17,7 @@ testReturnsCanonicalCase()
 {
 	initRepo
 	git config hooks.foo.bar baz
-	get_hook_required_config foo bar return_value > /dev/null
+	get_hook_config foo bar return_value required > /dev/null
 	assertEquals "0 should be return when everything is fine" 0 $?
 	assertEquals "the return value is not correct" baz $return_value
 }

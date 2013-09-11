@@ -1,8 +1,8 @@
 #!/bin/bash
 . .git/hooks/git_config_wrapper.sh
-get_hook_required_config php-sismo path path
+get_hook_config php-sismo path path required
 path_is_defined=$?
-get_hook_required_config php-sismo slug slug
+get_hook_config php-sismo slug slug required
 slug_is_defined=$?
 if [ $path_is_defined -ne 0 -o $slug_is_defined -ne 0 ]
 then
