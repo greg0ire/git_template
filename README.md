@@ -36,8 +36,8 @@ Optionally, you can set the projectType configuration, like this
 
 Supported project types :
 
-    - symfony1
-    - symfony2
+- symfony1
+- symfony2
 
 This will make ctags ignore cache directories.
 
