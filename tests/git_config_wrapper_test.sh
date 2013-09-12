@@ -22,6 +22,12 @@ testReturnsCanonicalCase()
 	assertEquals "the return value is not correct" baz $return_value
 }
 
+testOptionalDoesNotOutputAnyThing()
+{
+	get_hook_config missing argument return_value optional 2>$stderrF
+	assertEquals "$(cat $stderrF) was output" "" "$(cat $stderrF)"
+}
+
 initRepo()
 {
 	cd $testRepo

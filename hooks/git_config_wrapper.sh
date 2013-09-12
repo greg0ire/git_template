@@ -32,7 +32,7 @@ function get_hook_config()
 	git config --get hooks.$1.$2 > /dev/null
 	if [ $? -ne 0 ]
 	then
-		if [ isRequired ]
+		if $isRequired
 		then
 			echo "$2 configuration key of the $1 plugin must be set." >&2
 			echo "You may set it like this : git config hooks.$1.$2 some_value" >&2
