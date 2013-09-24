@@ -41,7 +41,7 @@ build_ctags_command()
 				command="$command --exclude='app/cache/*'"
 			;;
 			symfony1)
-				command="$command --exclude='cache/*'"
+				command="$command --exclude='cache/*' --exclude='plugins/*/vendor'"
 			;;
 			*)
 				echo "Unsupported project type $projectType" >&2
