@@ -51,6 +51,20 @@ testExitsWithCodeEqualToZeroWhenJunkIsNotInTheStagedPartOfAFile()
 	assertEquals "The junkchecker should be ok with this commit" 0 $rtrn
 }
 
+testExitsWithCodeEqualToZeroWhenJunkIsRemovedAndNotAdded()
+{
+	initRepo
+	echo "junk" >> .git/hooks/junkchecker/junk-phrases
+	echo "junk" > someFile
+	git add someFile
+	git commit --no-verify -m "Let's commit something we shouldn't" 1> /dev/null 2>/dev/null
+	echo "" > someFile
+	git add someFile
+	git commit -m "Let's remove some junk" 1> /dev/null 2>${stderrF}
+	rtrn=$?
+	assertEquals "The junkchecker should be ok with this commit" 0 $rtrn
+}
+
 initRepo()
 {
 	cd $testRepo
