@@ -13,10 +13,13 @@ then
 		if [ -f $FILE ]
 		then
 			for PHRASE in `cat $junkchecker_phrases_file`; do
-				git diff --cached $FILE | grep -q $PHRASE
+				git diff --cached --diff-filter=A $FILE | grep -q $PHRASE
 				if [ $? -eq 0 ]
 				then
-					echo "Junk checker detected: $FILE contains '$PHRASE'" >&2
+					cat <<- EOT >&2
+					Junk checker detected: $FILE contains '$PHRASE'.
+					Use the --no-verify option to bypass this error message.
+					EOT
 					exit 1
 				fi
 			done
