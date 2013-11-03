@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 CHANGED=`git diff HEAD@{1} --stat -- $GIT_DIR/../composer.lock | wc -l`
 if [ $CHANGED -gt 0 ];
