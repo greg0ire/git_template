@@ -1,6 +1,6 @@
 #!/bin/bash
 
-CHANGED=`git diff HEAD@{1} --stat -- $GIT_DIR/../composer.lock | wc -l`
+CHANGED=`git diff HEAD@{1} --stat -- "$(git rev-parse --show-toplevel)/composer.lock" | wc -l`
 if [ $CHANGED -gt 0 ];
 then
 	echo "composer.lock has changed!"
