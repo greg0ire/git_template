@@ -13,7 +13,7 @@ function get_hook_config()
 	local isRequired
 	if [ $# -ne 4 ]
 	then
-		echo "Usage: $0(<hook>, <option>, <return_variable_name> required|optional)" >&2
+		echo "Usage: $0 <hook>, <option>, <return_variable_name> required|optional" >&2
 		return 1
 	fi
 	case $4 in
