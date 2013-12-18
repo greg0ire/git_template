@@ -1,8 +1,9 @@
 #!/bin/bash
+. .git/hooks/php/composer/react.sh
 
 CHANGED=`git diff HEAD@{1} --stat -- "$(git rev-parse --show-toplevel)/composer.lock" | wc -l`
 if [ $CHANGED -gt 0 ];
 then
 	echo "composer.lock has changed!"
-	composer install --dev
+	react
 fi

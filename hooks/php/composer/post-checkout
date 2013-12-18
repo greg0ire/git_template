@@ -1,17 +1,18 @@
 #!/bin/bash
+. .git/hooks/php/composer/react.sh
 
 if [ -f composer.lock ]
 then
 
 	if [ ! -d vendor ]
 	then
-		composer install --dev
+		react
 	else
 		CHANGED=`git diff $1 $2 --stat -- $GIT_DIR/../composer.lock | wc -l`
 		if [ $CHANGED -gt 0 ];
 		then
 			echo "composer.lock has changed!"
-			composer install --dev
+			react
 		fi
 	fi
 else

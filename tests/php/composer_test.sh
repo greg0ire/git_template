@@ -63,6 +63,7 @@ testRunsComposerOnPostMerge()
 	git clone -q test_repo test_repo2
 	cd test_repo2
 	git config hooks.enabled-plugins php/composer
+	git config hooks.composer.onChange run
 	touch someFile
 	git add someFile
 	git commit -qm "someFile"
@@ -82,6 +83,7 @@ initRepo()
 	rm -rf .git
 	git init -q .
 	git config hooks.enabled-plugins php/composer
+	git config hooks.composer.onChange run
 }
 
 oneTimeSetUp()
