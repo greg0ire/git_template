@@ -19,6 +19,7 @@ build_ctags_command()
 			--exclude="*.js"
 			--exclude=".svn"
 			--exclude=".git"
+			--exclude=".rsync_cache"
 			--exclude="vendor/*/vendor"
 			--exclude="vendor/*/Tests"
 		EOT
