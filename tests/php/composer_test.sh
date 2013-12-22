@@ -5,6 +5,7 @@ testExistsWithCodeEqualToZeroWhenComposerJsonIsValid()
 	echo '{
 	"name": "awesome/project",
 	"description": "elaborate description",
+	"license": "proprietary",
 	"require": {
 
 	}
