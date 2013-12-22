@@ -164,10 +164,6 @@ and run `tests/all.sh`.
 
 Inspired by [Tim Pope][3]
 
-## Build Status
-
-[![Build Status](https://travis-ci.org/greg0ire/git_template.png)](https://travis-ci.org/greg0ire/git_template)
-
 [1]: https://github.com/composer/composer#global-installation-of-composer-manual
 [2]: http://sismo.sensiolabs.org/ "A local Continuous Testing Server"
 [3]: http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
