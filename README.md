@@ -51,6 +51,17 @@ This set of scripts monitors `composer.lock` changes and updates your vendor
 dependencies when appropriate. Additionally, it checks composer.json for
 validity on pre-commit. It assumes Composer is [globally installed][1].
 
+You must tell it whether you wish it to run Composer, or if you would rather
+it to notify you when you need to do it:
+
+    git config hooks.composer.onChange just_warn
+
+If the latter case, you must configure a notifier. Available notifiers for the
+moment are `echo` and `notify-send`. So to use `notify-send`, which is pretty
+cool, you need to do this :
+
+    git config hooks.notification.notifier notify-send
+
 Enable it :
 
     git config --add hooks.enabled-plugins php/composer

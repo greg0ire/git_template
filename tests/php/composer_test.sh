@@ -44,6 +44,20 @@ testRunsComposerOnComposerLockCheckoutChange()
 	git commit -qm "second version of composer.lock"
 	git checkout -q HEAD^
 	assertTrue 'Composer was not run' "[ `cat ${SHUNIT_TMPDIR}/composerWasRun` == "install" ]"
+	git config hooks.composer.onChange just_warn
+	git config hooks.notification.notifier notify-send
+	notify-send()
+	{
+		touch "${SHUNIT_TMPDIR}/notifySendWasRun"
+	}
+	export -f notify-send
+	git checkout -q master
+	assertTrue 'notify-send was not run' "[ -f ${SHUNIT_TMPDIR}/notifySendWasRun ]"
+
+	git config hooks.notification.notifier echo
+	git commit -qm "third version of composer.lock" > /dev/null
+	git checkout -q HEAD@{1} > ${SHUNIT_TMPDIR}/echoWasRun 2>&1
+	assertEquals 'echo was not run' 'You should run Composer!' "`cat ${SHUNIT_TMPDIR}/echoWasRun`"
 }
 
 testRunsComposerOnPostMerge()
@@ -75,7 +89,22 @@ testRunsComposerOnPostMerge()
 	export GIT_MERGE_AUTOEDIT=no
 	git pull -q > /dev/null 2>&1
 	assertTrue 'Composer was not run' "[ `cat ${SHUNIT_TMPDIR}/composerWasRun` == "install" ]"
+	cd - > /dev/null
+	echo "c" > composer.lock
+	git add composer.lock
+	git commit -qm "third version of composer.lock"
+	cd - > /dev/null
+	git config hooks.composer.onChange just_warn
+	git config hooks.notification.notifier notify-send
+	notify-send()
+	{
+		touch "${SHUNIT_TMPDIR}/notifySendWasRun"
+	}
+	export -f notify-send
+	git pull -q --no-edit > /dev/null 2>&1
+	assertTrue 'notify-send was not run' "[ -f ${SHUNIT_TMPDIR}/notifySendWasRun ]"
 }
+
 
 initRepo()
 {
