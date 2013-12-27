@@ -47,7 +47,7 @@ support.
 
 ### Composer hook
 
-This set of scripts monitor `composer.lock` changes and updates your vendor
+This set of scripts monitors `composer.lock` changes and updates your vendor
 dependencies when appropriate. Additionally, it checks composer.json for
 validity on pre-commit. It assumes Composer is [globally installed][1].
 
