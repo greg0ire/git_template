@@ -58,9 +58,9 @@ it to notify you when you need to do it:
 
 If the latter case, you must configure a notifier. Available notifiers for the
 moment are `echo` and `notify-send`. So to use `notify-send`, which is pretty
-cool, you need to do this :
+cool, you need to do this (here, globally) :
 
-    git config hooks.notification.notifier notify-send
+    git config --global hooks.notification.notifier notify-send
 
 Enable it :
 
