@@ -54,6 +54,10 @@ validity on pre-commit. It assumes Composer is [globally installed][1].
 You must tell it whether you wish it to run Composer, or if you would rather
 it to notify you when you need to do it:
 
+    # If you want Composer to run each time composer.lock changes
+    git config hooks.composer.onChange run
+
+    # If you prefer to get a notification
     git config hooks.composer.onChange just_warn
 
 If the latter case, you must configure a notifier. Available notifiers for the
