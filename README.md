@@ -28,11 +28,15 @@ require this to see the tags even if fugitive is installed.
 
 Enable it :
 
-    git config --add hooks.enabled-plugins php/ctags
+```sh
+git config --add hooks.enabled-plugins php/ctags
+```
 
 Optionally, you can set the projectType configuration, like this
 
-    git config hooks.php-ctags.project-type projectType
+```sh
+git config hooks.php-ctags.project-type projectType
+```
 
 Supported project types :
 
@@ -54,21 +58,27 @@ validity on pre-commit. It assumes Composer is [globally installed][1].
 You must tell it whether you wish it to run Composer, or if you would rather
 it to notify you when you need to do it:
 
-    # If you want Composer to run each time composer.lock changes
-    git config hooks.composer.onChange run
+```sh
+# If you want Composer to run each time composer.lock changes
+git config hooks.composer.onChange run
 
-    # If you prefer to get a notification
-    git config hooks.composer.onChange just_warn
+# If you prefer to get a notification
+git config hooks.composer.onChange just_warn
+```
 
 If the latter case, you must configure a notifier. Available notifiers for the
 moment are `echo` and `notify-send`. So to use `notify-send`, which is pretty
 cool, you need to do this (here, globally) :
 
-    git config --global hooks.notification.notifier notify-send
+```sh
+git config --global hooks.notification.notifier notify-send
+```
 
 Enable it :
 
-    git config --add hooks.enabled-plugins php/composer
+```sh
+git config --add hooks.enabled-plugins php/composer
+```
 
 ### Sismo hook
 
@@ -79,15 +89,21 @@ build before you push.
 You must configure the path to the sismo executable, and you may do so globally,
 like this:
 
-    git config --global --add hooks.php-sismo.path /usr/share/nginx/html/sismo.php
+```sh
+git config --global --add hooks.php-sismo.path /usr/share/nginx/html/sismo.php
+```
 
 You must also configure the slug of your project:
 
-    git config hooks.php-sismo.slug my-slug
+```sh
+git config hooks.php-sismo.slug my-slug
+```
 
 Enable it :
 
-    git config --add hooks.enabled-plugins php/sismo
+```sh
+git config --add hooks.enabled-plugins php/sismo
+```
 
 ### Doctrine hook
 
@@ -97,7 +113,9 @@ updates / migrates your database depending on the presence of a
 
 Enable it :
 
-    git config --add hooks.enabled-plugins php/doctrine
+```sh
+git config --add hooks.enabled-plugins php/doctrine
+```
 
 ### Junk checker hook
 
@@ -106,7 +124,9 @@ repository, such as `var_dump()`, `console.log()` etc.
 
 This can be overridden by doing a:
 
-    git commit --no-verify
+```sh
+git commit --no-verify
+```
 
 This hook is language-agnostic.
 
@@ -114,41 +134,53 @@ You must configure the `phrasesfile` option for this hook . The value is the
 name of a file that contains one phrase per line. There is a sample, you can
 use it like this :
 
-    git config [--global] hooks.junkchecker.phrasesfile .git/hooks/junkchecker/junk-phrases.sample
+```sh
+git config [--global] hooks.junkchecker.phrasesfile .git/hooks/junkchecker/junk-phrases.sample
+```
 
 Enable it :
 
-    git config --add hooks.enabled-plugins junkchecker
+```sh
+git config --add hooks.enabled-plugins junkchecker
+```
 
 ## Usage
 
 By default, no hook will run. You must configure the hooks you need:
 
-    git config hooks.enabled-plugins php/composer
-    git config --add hooks.enabled-plugins php/ctags
-    git config --add hooks.enabled-plugins junkchecker
+```sh
+git config hooks.enabled-plugins php/composer
+git config --add hooks.enabled-plugins php/ctags
+git config --add hooks.enabled-plugins junkchecker
+```
 
 The `--add` flag is necessary if you don't want to wipe out previously added
 plugins.
 
 If you want to enable a plugin on every project, use the `--global` option:
 
-    git config --global --add hooks.enabled-plugins some_plugin
+```sh
+git config --global --add hooks.enabled-plugins some_plugin
+```
 
 ## Updating
 
 To get updates you need to update your template directory first :
 
-    # Go to your template directory (probably ~/.git_template)
-    cd $(git config --path --get init.templatedir)
-    git pull
+```sh
+# Go to your template directory (probably ~/.git_template)
+cd $(git config --path --get init.templatedir)
+git pull
+```
 
 Then, you can update any repository by running this in the working tree of your
 repository :
 
-    $(git config --path --get init.templatedir)/update.sh
-    # If your template directory is ~/.git_template, this is equivalent to :
-    ~/.git_template/update.sh
+```sh
+$(git config --path --get init.templatedir)/update.sh
+# If your template directory is ~/.git_template, this is equivalent to :
+~/.git_template/update.sh
+```
 
 Make sure you have rsync installed.
 
