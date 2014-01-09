@@ -1,6 +1,6 @@
 #!/bin/bash -u
 PATH=$PATH:app
-console doctrine:schema:validate -q
+console doctrine:schema:validate --quiet
 RESULT=$?
 case $RESULT in
    2)

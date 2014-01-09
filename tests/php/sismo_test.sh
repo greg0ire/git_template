@@ -11,7 +11,7 @@ testIsRunOnCommit()
 	initRepo
 	echo "a" > someFile
 	git add someFile
-	git commit -qm "Let's commit some file"
+	git commit --quiet --message "Let's commit some file"
 	sleep 1
 	assertTrue 'Sismo was not run at all' "[ -f ${SHUNIT_TMPDIR}/phpWasRun ]"
 	assertEquals 'Sismo was not run properly' \
@@ -22,8 +22,8 @@ testIsRunOnCommit()
 initRepo()
 {
 	cd $testRepo
-	rm -rf .git
-	git init -q .
+	rm --recursive --force .git
+	git init --quiet .
 	git config hooks.enabled-plugins php/sismo
 	git config hooks.php-sismo.path /some/path
 	git config hooks.php-sismo.slug some-slug
@@ -37,7 +37,7 @@ oneTimeSetUp()
 	stderrF="${outputDir}/stderr"
 
 	testRepo=$SHUNIT_TMPDIR/test_repo
-	mkdir -p $testRepo
+	mkdir --parents $testRepo
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0

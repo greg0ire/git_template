@@ -16,15 +16,15 @@ testTriggeredOnValidateReturns2()
 	initRepo
 	echo "a" > someFile
 	git add someFile
-	git commit -qm "let's commit someFile" > /dev/null 2>&1
+	git commit --quiet --message "let's commit someFile" > /dev/null 2>&1
 	assertEquals 'Update was not run' \
 		"doctrine:schema:update" \
 		"`cat ${SHUNIT_TMPDIR}/consoleWasRun`"
 
-	mkdir -p vendor/doctrine/migrations
+	mkdir --parents vendor/doctrine/migrations
 	echo "b" > someFile
 	git add someFile
-	git commit -qm "let's commit someFile" > /dev/null 2>&1
+	git commit --quiet --message "let's commit someFile" > /dev/null 2>&1
 	assertEquals 'Migrate was not run' \
 		"doctrine:migrations:migrate" \
 		"`cat ${SHUNIT_TMPDIR}/consoleWasRun`"
@@ -42,7 +42,7 @@ testNoChangesWhenInvalidSchema()
 	initRepo
 	echo "a" > someFile
 	git add someFile
-	git commit -qm "let's commit someFile" > /dev/null 2>&1
+	git commit --quiet --message "let's commit someFile" > /dev/null 2>&1
 	assertEquals 'Only validate was run' \
 		"doctrine:schema:validate" \
 		"`cat ${SHUNIT_TMPDIR}/consoleWasRun`"
@@ -51,8 +51,8 @@ testNoChangesWhenInvalidSchema()
 initRepo()
 {
 	cd $testRepo
-	rm -rf .git
-	git init -q .
+	rm --recursive --force .git
+	git init --quiet .
 	git config hooks.enabled-plugins php/doctrine
 }
 
@@ -64,7 +64,7 @@ oneTimeSetUp()
 	stderrF="${outputDir}/stderr"
 
 	testRepo=$SHUNIT_TMPDIR/test_repo
-	mkdir -p $testRepo
+	mkdir --parents $testRepo
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0

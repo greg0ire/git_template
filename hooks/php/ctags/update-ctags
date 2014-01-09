@@ -11,7 +11,8 @@ build_ctags_command()
 	local command=$(cat <<-EOT
 		ctags
 			-h ".php"
-			-Rf.git/tags.$$
+			--recurse
+			-f.git/tags.$$
 			--languages=php
 			--totals=yes
 			--tag-relative=yes
@@ -52,7 +53,7 @@ build_ctags_command()
 	eval $command
 }
 
-trap "rm -f .git/tags.$$" EXIT
+trap "rm --force .git/tags.$$" EXIT
 build_ctags_command
 
 mv .git/tags.$$ .git/tags
