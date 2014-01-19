@@ -17,7 +17,7 @@ testWarnsWhenPushingWIPCommits()
 	git commit --quiet --message "WIP dummyFile is not finished"
 	git push -u origin master 1>/dev/null 2>&1
 	rtrn=$?
-	assertEquals "The wipchecked didn't detect a WIP commit" 1 $rtrn
+	assertEquals "The wipchecker didn't detect a WIP commit" 1 $rtrn
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
