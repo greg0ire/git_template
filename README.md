@@ -142,6 +142,25 @@ Enable it :
 git config --add hooks.enabled-plugins junkchecker
 ```
 
+### Work In Progress checker hook
+
+Checks for commit messages starting with "WIP" and prevents you from pushing
+the corresponding commits.
+
+This can be ignored with an option :
+
+```sh
+git push --no-verify
+```
+
+This hook is language-agnostic.
+
+Enable it :
+
+```sh
+git config --add hooks.enabled-plugins wipchecker
+```
+
 ## Usage
 
 By default, no hook will run. You must configure the hooks you need:
