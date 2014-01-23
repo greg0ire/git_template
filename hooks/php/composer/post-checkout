@@ -6,7 +6,6 @@ then
 	CHANGED=`git diff $1 $2 --stat -- $GIT_DIR/../composer.lock | wc --lines`
 	if [ $CHANGED -gt 0 ];
 	then
-		echo "composer.lock has changed!"
 		react
 	fi
 else
