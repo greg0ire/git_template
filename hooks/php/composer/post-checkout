@@ -3,17 +3,11 @@
 
 if [ -f composer.lock ]
 then
-
-	if [ ! -d vendor ]
+	CHANGED=`git diff $1 $2 --stat -- $GIT_DIR/../composer.lock | wc --lines`
+	if [ $CHANGED -gt 0 ];
 	then
+		echo "composer.lock has changed!"
 		react
-	else
-		CHANGED=`git diff $1 $2 --stat -- $GIT_DIR/../composer.lock | wc --lines`
-		if [ $CHANGED -gt 0 ];
-		then
-			echo "composer.lock has changed!"
-			react
-		fi
 	fi
 else
 	echo "no composer.lock found!"
