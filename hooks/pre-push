@@ -4,5 +4,10 @@ do
 	if [ -f .git/hooks/$enabled_plugin/pre-push ]
 	then
 		.git/hooks/$enabled_plugin/pre-push
+		ret=$?
+		if [ $ret -ne 0 ]
+		then
+			exit $ret
+		fi
 	fi
 done
