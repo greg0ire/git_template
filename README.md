@@ -210,10 +210,12 @@ Creating your php plugin is as easy as creating a php folder under `hooks/php`.
 You can then create hooks in it. For the moment, only the following are supported
 (because I'm lazy)
 
-* post-commit
-* post-checkout
-* post-merge
-* post-rewrite
+* `post-commit`
+* `post-checkout`
+* `post-merge`
+* `post-rewrite`
+* `pre-push`
+* `pre-commit`
 
 If you need to add configuration variables git configuration, you should prefix
 them with the path to your hook, which is obviously unique. This will avoid
