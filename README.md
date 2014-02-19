@@ -18,7 +18,7 @@ the content of this directory. By default, it uses `/usr/share/git-core/template
 
 For the moment, mostly hooks related to tools from the php ecosystem.
 
-### Exuberant Ctags hook
+### Exuberant Ctags hooks
 
 Updates `.git/tags` file by scanning the project with the ctags command. It is
 configured for a php project. To make vim look for this file in the `.git`
@@ -48,12 +48,14 @@ This will make ctags ignore cache directories.
 If you want improved PHP languages support, install the [patched version of ctags][6]
 support.
 
+Occurs on `post-checkout`, `post-commit`, and `post-merge`.
 
-### Composer hook
+
+### Composer hooks
 
 This set of scripts monitors `composer.lock` changes and updates your vendor
-dependencies when appropriate. Additionally, it checks composer.json for
-validity on pre-commit. It assumes Composer is [globally installed][1].
+dependencies on `post-checkout` and `post-merge`. Additionally, it checks composer.json for
+validity on `pre-commit`. It assumes Composer is [globally installed][1].
 
 You must tell it whether you wish it to run Composer, or if you would rather
 it to notify you when you need to do it:
@@ -82,7 +84,7 @@ git config --add hooks.enabled-plugins php/composer
 
 ### Sismo hook
 
-The post-commit hook makes [Sismo][2] run each time you commit. It is a post-commit
+The `post-commit` hook makes [Sismo][2] run each time you commit. It is a post-commit
 hook because Sismo is a *local* Continuous Testing Server, which means you can
 build before you push.
 
@@ -105,11 +107,12 @@ Enable it :
 git config --add hooks.enabled-plugins php/sismo
 ```
 
-### Doctrine hook
+### Doctrine hooks
 
-This hooks runs the `doctrine:schema:validate` task of a Symfony project and
+These hooks runs the `doctrine:schema:validate` task of a Symfony project and
 updates / migrates your database depending on the presence of a
-`doctrine-migrations` folder in your vendor directory.
+`doctrine-migrations` folder in your vendor directory on `post-checkout` and
+`post-commit`.
 
 Enable it :
 
@@ -120,7 +123,7 @@ git config --add hooks.enabled-plugins php/doctrine
 ### Junk checker hook
 
 Checks for user defined phrases that you don't want to commit to your
-repository, such as `var_dump()`, `console.log()` etc.
+repository, such as `var_dump()`, `console.log()` etc. on `pre-commit`.
 
 This can be overridden by doing a:
 
@@ -145,7 +148,7 @@ git config --add hooks.enabled-plugins junkchecker
 ### Work In Progress checker hook
 
 Checks for commit messages starting with "WIP" and prevents you from pushing
-the corresponding commits.
+the corresponding commits. Occurs on `pre-push` (obviously).
 
 This can be ignored with an option :
 
