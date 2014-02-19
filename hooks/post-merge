@@ -1,8 +1,8 @@
 #!/bin/bash
 for enabled_plugin in `git config --get-all hooks.enabled-plugins`
 do
-	if [ -f .git/hooks/$enabled_plugin/post-merge ]
+	if [ -f $GIT_DIR/hooks/$enabled_plugin/post-merge ]
 	then
-		.git/hooks/$enabled_plugin/post-merge $1
+		$GIT_DIR/hooks/$enabled_plugin/post-merge $1
 	fi
 done

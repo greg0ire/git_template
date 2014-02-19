@@ -1,8 +1,8 @@
 #!/bin/bash
 for enabled_plugin in `git config --get-all hooks.enabled-plugins`
 do
-	if [ -f .git/hooks/$enabled_plugin/post-commit ]
+	if [ -f $GIT_DIR/hooks/$enabled_plugin/post-commit ]
 	then
-		.git/hooks/$enabled_plugin/post-commit
+		$GIT_DIR/hooks/$enabled_plugin/post-commit
 	fi
 done
