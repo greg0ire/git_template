@@ -1,6 +1,17 @@
-switch_hook() {
+hook_is_enabled() {
 	local hook=$1
 	if [ "`git config --get-all hooks.enabled-plugins|grep $hook`" == "$hook" ]
+	then
+		return 0
+	else
+		return 1
+	fi
+
+}
+
+switch_hook() {
+	local hook=$1
+	if hook_is_enabled $hook
 	then
 		if [ "`git config --get-all --global hooks.enabled-plugins|grep $hook`" == "$hook" ]
 		then
