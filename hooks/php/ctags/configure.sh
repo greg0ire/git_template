@@ -3,9 +3,6 @@
 
 main() {
 	local projectType
-	echo "Configuring php/ctags"
-	switch_hook php/ctags
-
 
 	if hook_is_enabled php/ctags
 	then
