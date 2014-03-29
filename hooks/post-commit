@@ -1,4 +1,5 @@
 #!/bin/bash
+test -d "$GIT_DIR"/rebase-merge -o -d "$GIT_DIR"/rebase-apply && exit 0
 for enabled_plugin in `git config --get-all hooks.enabled-plugins`
 do
 	if [ -f $GIT_DIR/hooks/$enabled_plugin/post-commit ]
