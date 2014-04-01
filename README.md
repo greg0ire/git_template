@@ -166,6 +166,16 @@ git config --add hooks.enabled-plugins wipchecker
 
 ## Usage
 
+### For dummies
+
+Just run the configuration script. From your repository root, run
+
+    .git/configure.sh
+
+The script will help you configure some scripts that shouldn't be configured globally.
+
+### Manual configuration
+
 By default, no hook will run. You must configure the hooks you need:
 
 ```sh
