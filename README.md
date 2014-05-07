@@ -216,33 +216,7 @@ Make sure you have rsync installed.
 
 ## Contributing
 
-Creating your php plugin is as easy as creating a php folder under `hooks/php`.
-You can then create hooks in it. For the moment, only the following are supported
-(because I'm lazy)
-
-* `post-commit`
-* `post-checkout`
-* `post-merge`
-* `post-rewrite`
-* `pre-push`
-* `pre-commit`
-
-If you need to add configuration variables git configuration, you should prefix
-them with the path to your hook, which is obviously unique. This will avoid
-collisions.
-
-When using commands, prefer long options against short options. I invented the
-following rule, please follow it:
-
-> Short options are for the command line, long options are for scripts.
-
-## Running the test suite
-
-Get this random [shunit2][7] fork in ~/src :
-
-    git clone git@github.com:deniscostadsc/shunit2.git
-
-and run `tests/all.sh`.
+see [CONTRIBUTING.md][8]
 
 ## Credits
 
@@ -254,4 +228,4 @@ Inspired by [Tim Pope][3]
 [4]: https://github.com/tpope/vim-fugitive
 [5]: https://github.com/ivalkeen/vim-ctrlp-tjump
 [6]: https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags
-[7]: https://code.google.com/p/shunit2/
+[7]: ./CONTRIBUTING.md
