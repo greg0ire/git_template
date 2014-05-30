@@ -32,6 +32,15 @@ Enable it :
 git config --add hooks.enabled-plugins php/ctags
 ```
 
+Also, you can specify which kinds of tags ctags should create:
+
+```sh
+git config hooks.php-ctags.tag-kinds cdfiv
+```
+
+Default value is `cfi`. Execute `ctags --list-kinds` if you want to see which
+tag kinds are available.
+
 Optionally, you can set the projectType configuration, like this
 
 ```sh
