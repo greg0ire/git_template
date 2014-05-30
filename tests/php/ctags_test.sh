@@ -11,6 +11,7 @@ testTagsFileIsGeneratedOnCommit()
 testTagsFileWorksWithSymfony1()
 {
 	git config hooks.php-ctags.project-type symfony1
+	git config hooks.php-ctags.tag-kinds cfiv
 	echo '<?php $indexMe = 42;' > foo.php
 	mkdir cache
 	echo '<?php $doNotIndexMe = 42;' > cache/bar.php
@@ -25,6 +26,7 @@ testTagsFileWorksWithSymfony1()
 testTagsFileWorksWithSymfony2()
 {
 	git config hooks.php-ctags.project-type symfony2
+	git config hooks.php-ctags.tag-kinds cfiv
 	echo '<?php $indexMe = 42;' > foo.php
 	mkdir --parents app/cache
 	echo '<?php $doNotIndexMe = 42;' > app/cache/bar.php
