@@ -39,6 +39,23 @@ testTagsFileWorksWithSymfony2()
 }
 
 
+testTagsFileOptions()
+{
+	git config hooks.php-ctags.tag-kinds cfi # do not index variables
+	echo '<?php $variable = 42;' > foo.php
+	git add foo.php
+	git commit --quiet --message "foo file"
+	sleep 1 # ctags is run in the background. Wait for it.
+	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
+	assertFalse "\$variable was found" "grep variable .git/tags"
+
+	git config hooks.php-ctags.tag-kinds cfiv # index variables
+	git commit --amend --message 'foo file #2'
+	sleep 1 # ctags is run in the background. Wait for it.
+	assertTrue "\$variable was not found" "grep variable .git/tags"
+}
+
+
 
 initRepo()
 {
