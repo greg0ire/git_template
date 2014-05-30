@@ -16,7 +16,7 @@ build_ctags_command()
 			--languages=php
 			--totals=yes
 			--tag-relative=yes
-			--PHP-kinds=cfiv
+			--PHP-kinds=cdfiv
 			--exclude="*.js"
 			--exclude=".svn"
 			--exclude=".git"
