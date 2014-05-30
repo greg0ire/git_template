@@ -41,4 +41,4 @@ oneTimeSetUp()
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
-. ~/src/shunit2/shunit2
+. `which shunit2`

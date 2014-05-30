@@ -8,7 +8,7 @@ Get this random [shunit2][1] fork in ~/src :
 
     git clone git@github.com:deniscostadsc/shunit2.git
 
-and run `tests/all.sh`.
+add the resulting directory to your `$PATH`, and run `tests/all.sh`.
 
 ## General contribution guidelines
 
