@@ -11,29 +11,48 @@ testTagsFileIsGeneratedOnCommit()
 testTagsFileWorksWithSymfony1()
 {
 	git config hooks.php-ctags.project-type symfony1
-	echo '<?php class indexMe {};' > foo.php
+	git config hooks.php-ctags.tag-kinds cfiv
+	echo '<?php $indexMe = 42;' > foo.php
 	mkdir cache
-	echo '<?php class doNotIndexMe {};' > cache/bar.php
-	git add foo.php
-	git commit --quiet --message "foo file"
-	sleep 1 # ctags is run in the background. Wait for it.
-	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
-	assertTrue "indexMe was not found here : `cat .git/tags`" "grep indexMe .git/tags"
-	assertFalse 'doNotIndexMe was found' "grep doNotIndexMe .git/tags"
-}
-
-testTagsFileWorksWithSymfony2()
-{
-	git config hooks.php-ctags.project-type symfony2
-	echo '<?php class indexMe {};' > foo.php
-	mkdir --parents app/cache
-	echo '<?php class doNotIndexMe {};' > app/cache/bar.php
+	echo '<?php $doNotIndexMe = 42;' > cache/bar.php
 	git add foo.php
 	git commit --quiet --message "foo file"
 	sleep 1 # ctags is run in the background. Wait for it.
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
 	assertTrue "\$indexMe was not found here : `cat .git/tags`" "grep indexMe .git/tags"
 	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
+}
+
+testTagsFileWorksWithSymfony2()
+{
+	git config hooks.php-ctags.project-type symfony2
+	git config hooks.php-ctags.tag-kinds cfiv
+	echo '<?php $indexMe = 42;' > foo.php
+	mkdir --parents app/cache
+	echo '<?php $doNotIndexMe = 42;' > app/cache/bar.php
+	git add foo.php
+	git commit --quiet --message "foo file"
+	sleep 1 # ctags is run in the background. Wait for it.
+	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
+	assertTrue "\$indexMe was not found here : `cat .git/tags`" "grep indexMe .git/tags"
+	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
+}
+
+
+testTagsFileOptions()
+{
+	git config hooks.php-ctags.tag-kinds cfi # do not index variables
+	echo '<?php $variable = 42;' > foo.php
+	git add foo.php
+	git commit --quiet --message "foo file"
+	sleep 1 # ctags is run in the background. Wait for it.
+	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
+	assertFalse "\$variable was found" "grep variable .git/tags"
+
+	git config hooks.php-ctags.tag-kinds cfiv # index variables
+	git commit --amend --message 'foo file #2'
+	sleep 1 # ctags is run in the background. Wait for it.
+	assertTrue "\$variable was not found" "grep variable .git/tags"
 }
 
 
@@ -64,4 +83,4 @@ oneTimeSetUp()
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
-. ~/src/shunit2/shunit2
+. `which shunit2`

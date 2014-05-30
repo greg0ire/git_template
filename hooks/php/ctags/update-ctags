@@ -1,4 +1,4 @@
-#!/bin/bash -eu
+#!/bin/bash -u
 source .git/hooks/git_config_wrapper.sh
 
 new_flags_are_supported()
@@ -8,6 +8,13 @@ new_flags_are_supported()
 
 build_ctags_command()
 {
+	local tagKinds
+	get_hook_config php-ctags tag-kinds tagKinds optional
+	if [[ $? -ne 0 ]]
+	then
+		tagKinds=cfi
+	fi
+
 	local command=$(cat <<-EOT
 		ctags
 			-h ".php"
@@ -16,7 +23,7 @@ build_ctags_command()
 			--languages=php
 			--totals=yes
 			--tag-relative=yes
-			--PHP-kinds=cfi
+			--PHP-kinds=${tagKinds}
 			--exclude="*.js"
 			--exclude=".svn"
 			--exclude=".git"
