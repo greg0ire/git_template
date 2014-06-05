@@ -225,7 +225,7 @@ Make sure you have rsync installed.
 
 ## Contributing
 
-see [CONTRIBUTING.md][8]
+see [CONTRIBUTING.md][7]
 
 ## Credits
 
