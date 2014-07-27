@@ -50,7 +50,7 @@ testTagsFileOptions()
 	assertFalse "\$variable was found" "grep variable .git/tags"
 
 	git config hooks.php-ctags.tag-kinds cfiv # index variables
-	git commit --amend --message 'foo file #2'
+	git commit --quiet --amend --message 'foo file #2'
 	sleep 1 # ctags is run in the background. Wait for it.
 	assertTrue "\$variable was not found" "grep variable .git/tags"
 }
