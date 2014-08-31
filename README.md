@@ -181,7 +181,7 @@ For the moment, there only is a php checker, located at `hooks/syntaxchecker/php
 This hook is language-agnostic.
 
 ```sh
-git config --add hooks.enabled-plugins wipchecker
+git config --add hooks.enabled-plugins syntaxchecker
 ```
 
 ## Usage
