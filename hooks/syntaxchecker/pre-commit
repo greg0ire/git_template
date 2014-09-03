@@ -9,9 +9,9 @@ fi
 for FILE in `git diff-index --cached --name-status $against -- | cut --characters=3-`; do
 	if [ -f $FILE ]
 	then
-		if [ -f $GIT_DIR/hooks/syntaxchecker/${FILE##*.}/check.sh ]
+		if [ -f $GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh ]
 		then
-			source $GIT_DIR/hooks/syntaxchecker/${FILE##*.}/check.sh
+			source $GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh
 		fi
 	fi
 done
