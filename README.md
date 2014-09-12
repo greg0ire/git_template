@@ -96,7 +96,8 @@ git config --add hooks.enabled-plugins php/composer
 
 The `post-commit` hook makes [Sismo][2] run each time you commit. It is a post-commit
 hook because Sismo is a *local* Continuous Testing Server, which means you can
-build before you push.
+build before you push, thus making sure no failing build ever comes out of your
+repo.
 
 You must configure the path to the sismo executable, and you may do so globally,
 like this:
