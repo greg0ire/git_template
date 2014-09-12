@@ -62,9 +62,10 @@ Occurs on `post-checkout`, `post-commit`, and `post-merge`.
 
 ### Composer hooks
 
-This set of scripts monitors `composer.lock` changes and updates your vendor
-dependencies on `post-checkout` and `post-merge`. Additionally, it checks composer.json for
-validity on `pre-commit`. It assumes Composer is [globally installed][1].
+This set of scripts monitors `composer.lock` changes and updates (or reminds you
+to update) your vendor dependencies on `post-checkout` and `post-merge`.
+Additionally, it checks composer.json for validity on `pre-commit`.
+It assumes Composer is [globally installed][1].
 
 You must tell it whether you wish it to run Composer, or if you would rather
 it to notify you when you need to do it:
