@@ -145,8 +145,8 @@ git commit --no-verify
 This hook is language-agnostic.
 
 You must configure the `phrasesfile` option for this hook . The value is the
-name of a file that contains one phrase per line. There is a sample, you can
-use it like this :
+name of a file that contains one forbidden phrase per line. There is a sample,
+you can use it like this :
 
     git config [--global] hooks.junkchecker.phrasesfile .git/hooks/junkchecker/junk-phrases.sample
 
