@@ -236,6 +236,11 @@ $(git config --path --get init.templatedir)/update.sh
 
 Make sure you have rsync installed.
 
+## Setup on existing projects
+
+You can also run the update script from a project created before your switch
+to `git_template`, but be aware that any hook you created yourself will be deleted.
+
 ## Contributing
 
 see [CONTRIBUTING.md][7]
