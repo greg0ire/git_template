@@ -12,7 +12,7 @@ function react()
 				if get_hook_config notification notifier notifier required
 				then
 					case $notifier in
-						echo|notify-send)
+						echo|notify-send|testNotifier)
 							$notifier "$notification_message"
 							;;
 						*)

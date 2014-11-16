@@ -45,14 +45,14 @@ testRunsComposerOnComposerLockCheckoutChange()
 	git checkout --quiet HEAD^
 	assertTrue 'Composer was not run' "[ `cat ${SHUNIT_TMPDIR}/composerWasRun` == "install" ]"
 	git config hooks.composer.onChange just_warn
-	git config hooks.notification.notifier notify-send
-	notify-send()
+	git config hooks.notification.notifier testNotifier
+	testNotifier()
 	{
-		touch "${SHUNIT_TMPDIR}/notifySendWasRun"
+		touch "${SHUNIT_TMPDIR}/testNotifierWasRun"
 	}
-	export -f notify-send
+	export -f testNotifier
 	git checkout --quiet master
-	assertTrue 'notify-send was not run' "[ -f ${SHUNIT_TMPDIR}/notifySendWasRun ]"
+	assertTrue 'testNotifier was not run' "[ -f ${SHUNIT_TMPDIR}/testNotifierWasRun ]"
 
 	git config hooks.notification.notifier echo
 	git commit --quiet --message "third version of composer.lock" > /dev/null
@@ -95,14 +95,14 @@ testRunsComposerOnPostMerge()
 	git commit --quiet --message "third version of composer.lock"
 	cd - > /dev/null
 	git config hooks.composer.onChange just_warn
-	git config hooks.notification.notifier notify-send
-	notify-send()
+	git config hooks.notification.notifier testNotifier
+	testNotifier()
 	{
-		touch "${SHUNIT_TMPDIR}/notifySendWasRun"
+		touch "${SHUNIT_TMPDIR}/testNotifierWasRun"
 	}
-	export -f notify-send
+	export -f testNotifier
 	git pull --quiet --no-edit > /dev/null 2>&1
-	assertTrue 'notify-send was not run' "[ -f ${SHUNIT_TMPDIR}/notifySendWasRun ]"
+	assertTrue 'testNotifier was not run' "[ -f ${SHUNIT_TMPDIR}/testNotifierWasRun ]"
 }
 
 
