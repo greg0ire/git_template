@@ -3,7 +3,8 @@
 The `post-commit` hook makes [Sismo][1] run each time you commit. It is a `post-commit`
 hook because Sismo is a *local* Continuous Testing Server, which means you can
 build before you push, thus making sure no failing build ever comes out of your
-repo.
+repo, and even making sure each commit passes the tests, because you can rewrite
+failing commits.
 
 # Configuration
 
