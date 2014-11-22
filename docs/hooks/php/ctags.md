@@ -17,7 +17,7 @@ git config hooks.php-ctags.tag-kinds cdfiv
 Default value is `cfi`. Execute `ctags --list-kinds` if you want to see which
 tag kinds are available.
 
-Optionally, you can set the projectType configuration, like this
+Optionally, you can set the projectType configuration, like this :
 
 ```sh
 git config hooks.php-ctags.project-type projectType
