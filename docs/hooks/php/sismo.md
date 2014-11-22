@@ -1,9 +1,11 @@
-# Sismo hook
+# Description
 
 The `post-commit` hook makes [Sismo][1] run each time you commit. It is a post-commit
 hook because Sismo is a *local* Continuous Testing Server, which means you can
 build before you push, thus making sure no failing build ever comes out of your
 repo.
+
+# Configuration
 
 You must configure the path to the sismo executable, and you may do so globally,
 like this:
@@ -18,7 +20,7 @@ You must also configure the slug of your project:
 git config hooks.php-sismo.slug my-slug
 ```
 
-Enable it :
+# Activation
 
 ```sh
 git config --add hooks.enabled-plugins php/sismo

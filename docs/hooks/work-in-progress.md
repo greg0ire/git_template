@@ -1,4 +1,4 @@
-# Work In Progress checker hook
+# Description
 
 Checks for commit messages starting with "WIP" and prevents you from pushing
 the corresponding commits. Occurs on `pre-push` (obviously).
@@ -11,7 +11,7 @@ git push --no-verify
 
 This hook is language-agnostic.
 
-Enable it :
+# Activation
 
 ```sh
 git config --add hooks.enabled-plugins wipchecker

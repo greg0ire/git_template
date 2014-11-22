@@ -1,4 +1,4 @@
-# Exuberant Ctags hooks
+# Description
 
 Updates `.git/tags` file by scanning the project with the ctags command. It is
 configured for a php project. To make vim look for this file in the `.git`
@@ -6,13 +6,9 @@ directory, you can install Tim Pope's [fugitive][1] or simply add
 `set tags+=.git/tags` to your .vimrc - some plugins (like [ctrlp-tjump][2])
 require this to see the tags even if fugitive is installed.
 
-Enable it :
+# Configuration
 
-```sh
-git config --add hooks.enabled-plugins php/ctags
-```
-
-Also, you can specify which kinds of tags ctags should create:
+You can specify which kinds of tags ctags should create:
 
 ```sh
 git config hooks.php-ctags.tag-kinds cdfiv
@@ -39,6 +35,11 @@ support.
 
 Occurs on `post-checkout`, `post-commit`, and `post-merge`.
 
+# Activation
+
+```sh
+git config --add hooks.enabled-plugins php/ctags
+```
 [2]: https://github.com/tpope/vim-fugitive
 [3]: https://github.com/ivalkeen/vim-ctrlp-tjump
 [1]: https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags
