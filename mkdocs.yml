@@ -1,5 +1,6 @@
 site_name: Git Template
 pages:
+  - [index.md, Home]
   - [usage.md, Usage]
   - [hooks/syntax-checker.md, 'Hooks', 'Syntax checker']
   - [hooks/work-in-progress.md, 'Hooks', 'Work In Progress']
