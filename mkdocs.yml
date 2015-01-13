@@ -8,3 +8,4 @@ pages:
   - [hooks/php/ctags.md, 'Hooks', 'PHP : Ctags']
   - [hooks/php/sismo.md, 'Hooks', 'PHP : Sismo']
   - [hooks/php/doctrine.md, 'Hooks', 'PHP : Doctrine']
+  - [upgrade/2-to-3.md, 'Upgrading', '2.x.x to 3.x.x']

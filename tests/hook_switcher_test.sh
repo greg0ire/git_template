@@ -1,5 +1,5 @@
 #!/bin/bash
-. `dirname $0`/../hooks/hook_switcher.sh
+. `dirname $0`/../template/hooks/hook_switcher.sh
 
 testHookIsEnabled()
 {

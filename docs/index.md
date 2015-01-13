@@ -16,14 +16,14 @@ Set the newly cloned repo as your git template directory. This will tell git to
 populate new repositories created with either `git clone` or `git init` with
 the content of this directory. By default, it uses `/usr/share/git-core/templates`.
 
-    git config --global init.templatedir '~/.git_template'
+    git config --global init.templatedir '~/.git_template/template'
 
 ## Updating
 
 To get updates you need to update your template directory first :
 
 ```sh
-# Go to your template directory (probably ~/.git_template)
+# Go to your template directory (probably ~/.git_template/template)
 cd $(git config --path --get init.templatedir)
 git pull
 ```
@@ -33,8 +33,8 @@ repository :
 
 ```sh
 $(git config --path --get init.templatedir)/update.sh
-# If your template directory is ~/.git_template, this is equivalent to :
-~/.git_template/update.sh
+# If your template directory is ~/.git_template/template, this is equivalent to :
+~/.git_template/template/update.sh
 ```
 
 Make sure you have rsync installed.

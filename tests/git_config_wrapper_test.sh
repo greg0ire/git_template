@@ -1,5 +1,5 @@
 #!/bin/bash
-. `dirname $0`/../hooks/git_config_wrapper.sh
+. `dirname $0`/../template/hooks/git_config_wrapper.sh
 
 testReturns2WhenKeyIsNotSet()
 {
