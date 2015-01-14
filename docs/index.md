@@ -32,9 +32,9 @@ Then, you can update any repository by running this in the working tree of your
 repository :
 
 ```sh
-$(git config --path --get init.templatedir)/update.sh
+$(git config --path --get init.templatedir)/../update.sh
 # If your template directory is ~/.git_template/template, this is equivalent to :
-~/.git_template/template/update.sh
+~/.git_template/update.sh
 ```
 
 Make sure you have rsync installed.
