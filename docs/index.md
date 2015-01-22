@@ -8,7 +8,7 @@ update your copies.
 
 ## Installation
 
-    git clone git@github.com:greg0ire/git_template.git ~/.git_template
+    git clone https://github.com/greg0ire/git_template ~/.git_template
 
 ## Configuration
 
