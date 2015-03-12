@@ -1,4 +1,4 @@
-# Junk checker hook
+# Description
 
 Checks for user defined phrases that you don't want to commit to your
 repository, such as `var_dump()`, `console.log()` etc. on `pre-commit`.
@@ -17,7 +17,7 @@ you can use it like this :
 
     git config [--global] hooks.junkchecker.phrasesfile .git/hooks/junkchecker/junk-phrases.sample
 
-Enable it :
+# Activation
 
 ```sh
 git config --add hooks.enabled-plugins junkchecker
