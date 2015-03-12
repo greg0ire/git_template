@@ -3,7 +3,7 @@
 Checks for user defined phrases that you don't want to commit to your
 repository, such as `var_dump()`, `console.log()` etc. on `pre-commit`.
 
-This can be overridden by doing a:
+This can be overridden by using the following option :
 
 ```sh
 git commit --no-verify
