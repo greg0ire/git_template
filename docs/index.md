@@ -1,10 +1,23 @@
 # Git Template documentation
 
+Have you ever  commited an invalid `composer.json` ? a parse error ? changes that
+broke your made the test suite go red ? or maybe debugging statements like
+`var_dump`, `console.log`, `die` and so on ?
+Have you ever accused your colleagues of breaking things when you really should
+have run `composer install` or updated your database schema ?
+Have you ever pushed a work in progress commit that you really meant to complete
+before that ?
+
+If this feels familiar, Git Template has your back, give it a try!
+
 [Git Template][0] is a remplacement for the default directory that gets copied
-each time you create or clone a git repository. It contains useful hooks along
-with a configuration script that will let you to switch them on or off and
-configure parameters when available, and an update script that will let you
-update your copies.
+each time you create or clone a git repository. That's right, every time you
+create or clone a git repository, some files get copied in your `.git` directory.
+These files mostly consist of example hooks you may change and adapt to meet your
+needs.
+Git Template contains useful (mostly php-related) hooks along with a configuration
+script that will let you to switch them on or off and configure parameters when
+available, and an update script that will let you update your copies.
 
 ## Installation
 
