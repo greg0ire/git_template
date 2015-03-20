@@ -12,6 +12,11 @@ for FILE in `git diff-index --cached --name-status $against -- | cut --character
 		if [ -f $GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh ]
 		then
 			source $GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh
+			if [ $? -ne 0 ]
+			then
+				echo 'Problem while parsing file ' "$FILE"
+				exit 1
+			fi
 		fi
 	fi
 done
