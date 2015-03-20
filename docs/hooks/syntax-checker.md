@@ -1,7 +1,10 @@
 # Description
 
 Checks for syntax errors in files that have a checker, based on the file extension.
-For the moment, there only is a php checker, located at `hooks/syntaxchecker/php/check.sh`.
+For the moment, there is :
+
+- a php checker, located at `hooks/syntaxchecker/php.sh`;
+- an xliff checker, located at `hooks/syntaxchecker/xlf.sh`.
 
 This hook is language-agnostic.
 
