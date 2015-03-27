@@ -40,6 +40,6 @@ Occurs on `post-checkout`, `post-commit`, and `post-merge`.
 ```sh
 git config --add hooks.enabled-plugins php/ctags
 ```
-[2]: https://github.com/tpope/vim-fugitive
-[3]: https://github.com/ivalkeen/vim-ctrlp-tjump
-[1]: https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags
+[1]: https://github.com/tpope/vim-fugitive
+[2]: https://github.com/ivalkeen/vim-ctrlp-tjump
+[3]: https://github.com/shawncplus/phpcomplete.vim/wiki/Patched-ctags
