@@ -22,7 +22,7 @@ function react()
 				fi
 				;;
 			run)
-				composer install --dev
+				composer install
 				;;
 			*)
 				echo "composer.onChange value should be just_warn or run" >&2
