@@ -47,7 +47,7 @@ build_ctags_command()
 	then
 		case $projectType in
 			symfony2)
-				command="$command --exclude='app/cache/*'"
+				command="$command --exclude='app/cache/*' --exclude='web/bundles/*'"
 			;;
 			symfony1)
 				command="$command --exclude='cache/*' --exclude='plugins/*/vendor'"
