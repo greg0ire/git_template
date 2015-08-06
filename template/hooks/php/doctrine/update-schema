@@ -3,7 +3,7 @@ PATH=$PATH:app
 console doctrine:schema:validate --quiet
 RESULT=$?
 case $RESULT in
-   2)
+	2)
 	  echo "Your schema is not up to date!"
 	  if [ -d "vendor/doctrine/migrations" ]
 	  then
@@ -27,7 +27,7 @@ case $RESULT in
 		 console doctrine:schema:update --force --complete
 	  fi
 	  ;;
-   3)
+	3)
 	  console doctrine:schema:validate
 	  echo "Your schema is invalid, but won't be updated because your mapping has errors. Please Fix them first."
 	  ;;

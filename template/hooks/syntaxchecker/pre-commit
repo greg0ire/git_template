@@ -1,17 +1,17 @@
 #!/bin/bash
-. $GIT_DIR/hooks/git_config_wrapper.sh
+. "$GIT_DIR/hooks/git_config_wrapper.sh"
 if git-rev-parse --verify HEAD >/dev/null 2>&1; then
 	against=HEAD
 else
 	against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
 fi
 
-for FILE in `git diff-index --cached --name-status $against -- | cut --characters=3-`; do
-	if [ -f $FILE ]
+for FILE in $(git diff-index --cached --name-status $against -- | cut --characters=3-); do
+	if [ -f "$FILE" ]
 	then
-		if [ -f $GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh ]
+		if [ -f "$GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh" ]
 		then
-			source $GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh
+			source "$GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh"
 			if [ $? -ne 0 ]
 			then
 				echo 'Problem while parsing file ' "$FILE"

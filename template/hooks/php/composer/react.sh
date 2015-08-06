@@ -1,3 +1,4 @@
+#!/bin/bash
 . .git/hooks/git_config_wrapper.sh
 
 function react()

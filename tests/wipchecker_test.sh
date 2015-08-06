@@ -3,8 +3,8 @@
 testWarnsWhenPushingWIPCommits()
 {
 	testRepo=$SHUNIT_TMPDIR/test_repo
-	mkdir --parents $testRepo
-	cd $testRepo
+	mkdir --parents "$testRepo"
+	cd "$testRepo"
 	git init --quiet --bare .
 	cd ..
 	mkdir other_repo
@@ -21,4 +21,4 @@ testWarnsWhenPushingWIPCommits()
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
-. `which shunit2`
+. "$(which shunit2)"

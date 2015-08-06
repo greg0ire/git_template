@@ -19,7 +19,7 @@ testTagsFileWorksWithSymfony1()
 	git commit --quiet --message "foo file"
 	sleep 1 # ctags is run in the background. Wait for it.
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
-	assertTrue "\$indexMe was not found here : `cat .git/tags`" "grep indexMe .git/tags"
+	assertTrue "\$indexMe was not found here : $(cat .git/tags)" "grep indexMe .git/tags"
 	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
 }
 
@@ -34,7 +34,7 @@ testTagsFileWorksWithSymfony2()
 	git commit --quiet --message "foo file"
 	sleep 1 # ctags is run in the background. Wait for it.
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
-	assertTrue "\$indexMe was not found here : `cat .git/tags`" "grep indexMe .git/tags"
+	assertTrue "\$indexMe was not found here : $(cat .git/tags)" "grep indexMe .git/tags"
 	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
 }
 
@@ -59,9 +59,9 @@ testTagsFileOptions()
 
 initRepo()
 {
-	rm --recursive --force $testRepo
-	mkdir $testRepo
-	cd $testRepo
+	rm --recursive --force "$testRepo"
+	mkdir "$testRepo"
+	cd "$testRepo"
 	git init --quiet .
 	git config hooks.enabled-plugins php/ctags
 }
@@ -75,12 +75,10 @@ oneTimeSetUp()
 {
 	outputDir="${SHUNIT_TMPDIR}/output"
 	mkdir "${outputDir}"
-	stdoutF="${outputDir}/stdout"
-	stderrF="${outputDir}/stderr"
 
 	testRepo=$SHUNIT_TMPDIR/test_repo
-	mkdir --parents $testRepo
+	mkdir --parents "$testRepo"
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
-. `which shunit2`
+. "$(which shunit2)"

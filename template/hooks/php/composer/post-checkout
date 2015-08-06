@@ -3,8 +3,8 @@
 
 if [ -f composer.lock ]
 then
-	CHANGED=`git diff $1 $2 --stat -- $GIT_DIR/../composer.lock | wc --lines`
-	if [ $CHANGED -gt 0 ];
+	CHANGED=$(git diff "$1" "$2" --stat -- "$GIT_DIR/../composer.lock" | wc --lines)
+	if [ "$CHANGED" -gt 0 ];
 	then
 		react
 	fi

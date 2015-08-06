@@ -11,7 +11,7 @@ testExistsWithCodeEqualToZeroWhenComposerJsonIsValid()
 	}
 }' > composer.json
 	git add composer.json
-	git commit --message "Let's commit a the composer.json" 1> /dev/null 2>${stderrF}
+	git commit --message "Let's commit a the composer.json" 1> /dev/null 2> "${stderrF}"
 	rtrn=$?
 	assertEquals "The valid composer.json did not pass" 0 $rtrn
 }
@@ -21,7 +21,7 @@ testExitsWithCodeGreaterThanZeroWhenComposerJsonIsInvalid()
 	initRepo
 	echo "invalid json data" > composer.json
 	git add composer.json
-	git commit --message "Let's commit a the composer.json" 1> /dev/null 2>${stderrF}
+	git commit --message "Let's commit a the composer.json" 1> /dev/null 2> "${stderrF}"
 	rtrn=$?
 	assertEquals "The invalid composer.json passed" 1 $rtrn
 
@@ -31,7 +31,7 @@ testRunsComposerOnComposerLockCheckoutChange()
 {
 	composer()
 	{
-		echo $1 > "${SHUNIT_TMPDIR}/composerWasRun"
+		echo "$1" > "${SHUNIT_TMPDIR}/composerWasRun"
 	}
 	export -f composer
 	export SHUNIT_TMPDIR
@@ -43,7 +43,7 @@ testRunsComposerOnComposerLockCheckoutChange()
 	git add composer.lock
 	git commit --quiet --message "second version of composer.lock"
 	git checkout --quiet HEAD^
-	assertTrue 'Composer was not run' "[ `cat ${SHUNIT_TMPDIR}/composerWasRun` == "install" ]"
+	assertTrue 'Composer was not run' "[ $(cat "${SHUNIT_TMPDIR}/composerWasRun") == install ]"
 	git config hooks.composer.onChange just_warn
 	git config hooks.notification.notifier testNotifier
 	testNotifier()
@@ -56,15 +56,15 @@ testRunsComposerOnComposerLockCheckoutChange()
 
 	git config hooks.notification.notifier echo
 	git commit --quiet --message "third version of composer.lock" > /dev/null
-	git checkout --quiet HEAD@{1} > ${SHUNIT_TMPDIR}/echoWasRun 2>&1
-	assertEquals 'echo was not run' 'You should run Composer!' "`cat ${SHUNIT_TMPDIR}/echoWasRun`"
+	git checkout --quiet 'HEAD@{1}' > "${SHUNIT_TMPDIR}/echoWasRun" 2>&1
+	assertEquals 'echo was not run' 'You should run Composer!' "$(cat "${SHUNIT_TMPDIR}/echoWasRun")"
 }
 
 testRunsComposerOnPostMerge()
 {
 	composer()
 	{
-		echo $1 > "${SHUNIT_TMPDIR}/composerWasRun"
+		echo "$1" > "${SHUNIT_TMPDIR}/composerWasRun"
 	}
 	export -f composer
 	export SHUNIT_TMPDIR
@@ -88,7 +88,7 @@ testRunsComposerOnPostMerge()
 	cd - > /dev/null
 	export GIT_MERGE_AUTOEDIT=no
 	git pull --quiet > /dev/null 2>&1
-	assertTrue 'Composer was not run' "[ `cat ${SHUNIT_TMPDIR}/composerWasRun` == "install" ]"
+	assertTrue 'Composer was not run' "[ $(cat "${SHUNIT_TMPDIR}/composerWasRun") == install ]"
 	cd - > /dev/null
 	echo "c" > composer.lock
 	git add composer.lock
@@ -108,7 +108,7 @@ testRunsComposerOnPostMerge()
 
 initRepo()
 {
-	cd $testRepo
+	cd "$testRepo"
 	rm --recursive --force .git
 	git init --quiet .
 	git config hooks.enabled-plugins php/composer
@@ -119,12 +119,11 @@ oneTimeSetUp()
 {
 	outputDir="${SHUNIT_TMPDIR}/output"
 	mkdir "${outputDir}"
-	stdoutF="${outputDir}/stdout"
 	stderrF="${outputDir}/stderr"
 
 	testRepo=$SHUNIT_TMPDIR/test_repo
-	mkdir --parents $testRepo
+	mkdir --parents "$testRepo"
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
-. `which shunit2`
+. "$(which shunit2)"
