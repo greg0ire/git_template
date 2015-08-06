@@ -13,7 +13,7 @@ then
 		if [ -f $FILE ]
 		then
 			for PHRASE in `cat $junkchecker_phrases_file`; do
-				git diff --cached --diff-filter=A $FILE | grep --quiet $PHRASE
+				git diff --cached --diff-filter=ACMR $FILE | grep -E '^\+' | grep --quiet $PHRASE
 				if [ $? -eq 0 ]
 				then
 					cat <<- EOT >&2
