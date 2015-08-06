@@ -12,8 +12,9 @@ then
 	for FILE in `git diff-index --cached --name-status $against -- | cut --characters=3-`; do
 		if [ -f $FILE ]
 		then
-			for PHRASE in `cat $junkchecker_phrases_file`; do
-				git diff --cached --diff-filter=ACMR $FILE | grep -E '^\+' | grep --quiet $PHRASE
+			while read -r PHRASE
+			do
+				git diff --cached --diff-filter=ACMR $FILE | grep -E '^\+' | grep --quiet "$PHRASE"
 				if [ $? -eq 0 ]
 				then
 					cat <<- EOT >&2
@@ -22,7 +23,7 @@ then
 					EOT
 					exit 1
 				fi
-			done
+			done < $junkchecker_phrases_file
 		fi
 	done
 else
