@@ -12,13 +12,13 @@ then
 	for FILE in `git diff-index --cached --name-status $against -- | cut --characters=3-`; do
 		if [ -f $FILE ]
 		then
-			while read -r PHRASE
+			while read -r
 			do
-				git diff --cached --diff-filter=ACMR $FILE | grep -E '^\+' | grep --quiet "$PHRASE"
+				git diff --cached --diff-filter=ACMR $FILE | grep -E '^\+' | grep --quiet "$REPLY"
 				if [ $? -eq 0 ]
 				then
 					cat <<- EOT >&2
-					Junk checker detected: $FILE contains '$PHRASE'.
+					Junk checker detected: $FILE contains '$REPLY'.
 					Use the --no-verify option to bypass this error message.
 					EOT
 					exit 1
