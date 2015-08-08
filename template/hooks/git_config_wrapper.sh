@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Gets a required configuration key from the git config
 #
 # @param string the name of the hook
@@ -29,7 +31,7 @@ function get_hook_config()
 	esac
 
 	local __resultvar=$3
-	git config --get hooks.$1.$2 > /dev/null
+	git config --get "hooks.$1.$2" > /dev/null
 	if [ $? -ne 0 ]
 	then
 		if $isRequired
@@ -39,7 +41,7 @@ function get_hook_config()
 		fi
 		return 2
 	fi
-	local output=$(git config --get hooks.$1.$2)
+	local output=$(git config --get "hooks.$1.$2")
 	eval $__resultvar="'$output'"
 	return 0
 }

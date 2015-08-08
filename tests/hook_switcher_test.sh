@@ -1,5 +1,5 @@
 #!/bin/bash
-. `dirname $0`/../template/hooks/hook_switcher.sh
+. "$(dirname "$0")/../template/hooks/hook_switcher.sh"
 
 testHookIsEnabled()
 {
@@ -13,7 +13,7 @@ testHookIsEnabled()
 
 initRepo()
 {
-	cd $testRepo
+	cd "$testRepo"
 	git init --quiet .
 }
 
@@ -21,12 +21,10 @@ oneTimeSetUp()
 {
 	outputDir="${SHUNIT_TMPDIR}/output"
 	mkdir "${outputDir}"
-	stdoutF="${outputDir}/stdout"
-	stderrF="${outputDir}/stderr"
 
 	testRepo=$SHUNIT_TMPDIR/test_repo
-	mkdir --parents $testRepo
+	mkdir --parents "$testRepo"
 }
 
 [ -n "${ZSH_VERSION:-}" ] && SHUNIT_PARENT=$0
-. `which shunit2`
+. "$(which shunit2)"

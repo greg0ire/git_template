@@ -19,8 +19,6 @@
 # This sample shows how to prevent push of commits where the log message starts
 # with "WIP" (work in progress).
 
-remote="$1"
-url="$2"
 
 z40=0000000000000000000000000000000000000000
 
@@ -42,7 +40,7 @@ do
 		fi
 
 		# Check for WIP commit
-		commit=`git rev-list -n 1 --grep '^WIP' "$range"`
+		commit=$(git rev-list -n 1 --grep '^WIP' "$range")
 		if [ -n "$commit" ]
 		then
 			echo "Found WIP commit in $local_ref, not pushing"

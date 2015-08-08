@@ -1,9 +1,9 @@
 #!/bin/bash
-for enabled_plugin in `git config --get-all hooks.enabled-plugins`
+for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do
-	if [ -f .git/hooks/$enabled_plugin/pre-push ]
+	if [ -f ".git/hooks/$enabled_plugin/pre-push" ]
 	then
-		.git/hooks/$enabled_plugin/pre-push
+		".git/hooks/$enabled_plugin/pre-push"
 		ret=$?
 		if [ $ret -ne 0 ]
 		then
