@@ -15,6 +15,12 @@ see [CONTRIBUTING.md][2]
 
 Inspired by [Tim Pope][3]
 
+## Build Status
+
+[![Build Status][4]][5]
+
 [1]: http://git-template.readthedocs.org
 [2]: ./CONTRIBUTING.md
 [3]: http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
+[4]: https://travis-ci.org/greg0ire/git_template.png
+[5]: https://travis-ci.org/greg0ire/git_template

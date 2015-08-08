@@ -13,7 +13,7 @@ testIsSilentWhenCommitingSymlink()
 testExitsWithCodeGreaterThanZeroWhenDetectingJunk()
 {
 	initRepo
-	echo "junk" >> .git/hooks/junkchecker/junk-phrases
+	echo "junk" > junk-phrases
 	echo "junk" > someFile
 	git add someFile
 	git commit --message "Let's commit something we shouldn't" 1> /dev/null 2> "${stderrF}"
@@ -22,24 +22,11 @@ testExitsWithCodeGreaterThanZeroWhenDetectingJunk()
 
 }
 
-testExitsWithCodeEqualToZeroWhenJunkIsNotInTheStagingArea()
-{
-	rm --recursive --force .git
-	initRepo
-	echo "junk" > .git/hooks/junkchecker/junk-phrases
-	echo "test" > someFile
-	git add someFile
-	echo "junk" >> someFile
-	git commit --message "Let's commit something perfectly ok" 1> /dev/null 2>"${stderrF}"
-	rtrn=$?
-	assertEquals "The junkchecker should be ok with this commit" 0 $rtrn
-}
-
 testExitsWithCodeEqualToZeroWhenJunkIsNotInTheStagedPartOfAFile()
 {
 	rm --recursive --force .git
 	initRepo
-	echo "junk" >> .git/hooks/junkchecker/junk-phrases
+	echo "junk" > junk-phrases
 	echo "test" > someFile
 	git add someFile
 	echo "junk" >> someFile
@@ -51,7 +38,7 @@ testExitsWithCodeEqualToZeroWhenJunkIsNotInTheStagedPartOfAFile()
 testExitsWithCodeEqualToZeroWhenJunkIsRemovedAndNotAdded()
 {
 	initRepo
-	echo "junk" >> .git/hooks/junkchecker/junk-phrases
+	echo "junk" > junk-phrases
 	echo "junk" > someFile
 	git add someFile
 	git commit --no-verify --message "Let's commit something we shouldn't" 1> /dev/null 2>/dev/null
@@ -66,9 +53,9 @@ initRepo()
 {
 	cd "$testRepo"
 	git init --quiet .
-	mv .git/hooks/junkchecker/junk-phrases.sample .git/hooks/junkchecker/junk-phrases
 	git config hooks.enabled-plugins junkchecker
-	git config hooks.junkchecker.phrasesfile .git/hooks/junkchecker/junk-phrases
+	git config hooks.junkchecker.phrasesfile junk-phrases
+	echo "" > junk-phrases
 }
 
 oneTimeSetUp()

@@ -1,4 +1,11 @@
 #!/bin/bash
+if [ -f .git/hooks/configure.sh ]
+then
+	echo "Huh ? Copy failed or what ?"
+	ls .git/hooks
+	ls "$(git config --path --get init.templatedir)"
+	exit 1
+fi
 cd "$( dirname "$0" )"
 for script in * php/*
 do
