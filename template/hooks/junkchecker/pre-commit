@@ -12,18 +12,18 @@ then
 	for FILE in `git diff-index --cached --name-status $against -- | cut --characters=3-`; do
 		if [ -f $FILE ]
 		then
-			while read -r
+			for line in $(cat "$junkchecker_phrases_file")
 			do
 				git diff --cached --diff-filter=ACMR $FILE | grep -E '^\+' | grep --quiet "$REPLY"
 				if [ $? -eq 0 ]
 				then
 					cat <<- EOT >&2
-					Junk checker detected: $FILE contains '$REPLY'.
+					Junk checker detected: $FILE contains '$line'.
 					Use the --no-verify option to bypass this error message.
 					EOT
 					exit 1
 				fi
-			done < $junkchecker_phrases_file
+			done
 		fi
 	done
 else
