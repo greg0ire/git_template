@@ -52,6 +52,6 @@ function get_hook_config()
 	else
 		local value="$(git config --get "hooks.$1.$2")"
 	fi
-	eval $__resultvar="'$value'"
+	eval "$__resultvar=$value"
 	return 0
 }
