@@ -1,34 +1,44 @@
 #!/bin/bash -u
-PATH=$PATH:app
-console doctrine:schema:validate --quiet
-RESULT=$?
-case $RESULT in
-	2)
-	  echo "Your schema is not up to date!"
-	  if [ -d "vendor/doctrine/migrations" ]
-	  then
-		 echo "Looks like you're using migrations"
-		 read -p "Do you wish to migrate (y/n) ? " -n 1
-		 if [[ ! $REPLY =~ ^[Yy]$ ]]
-		 then
-			echo "not updating"
-			exit 1
-		 fi
-		 console doctrine:migrations:migrate
-	  else
-		 echo "Looks like you're not using migrations! the following queries will be run:"
-		 console doctrine:schema:update --dump-sql --complete
-		 read -p "Do you wish to update the schema (y/n) ? " -n 1
-		 if [[ ! $REPLY =~ ^[Yy]$ ]]
-		 then
-			echo "not updating"
-			exit 1
-		 fi
-		 console doctrine:schema:update --force --complete
-	  fi
-	  ;;
-	3)
-	  console doctrine:schema:validate
-	  echo "Your schema is invalid, but won't be updated because your mapping has errors. Please Fix them first."
-	  ;;
-esac
+. "$GIT_DIR/hooks/git_config_wrapper.sh"
+
+updateSchema()
+{
+	local console
+	local result
+	get_hook_config doctrine sf-executable console optional app/console
+
+	$console doctrine:schema:validate --quiet
+	result=$?
+	case $result in
+		2)
+		  echo "Your schema is not up to date!"
+		  if [ -d "vendor/doctrine/migrations" ]
+		  then
+			 echo "Looks like you're using migrations"
+			 read -p "Do you wish to migrate (y/n) ? " -n 1
+			 if [[ ! $REPLY =~ ^[Yy]$ ]]
+			 then
+				echo "not updating"
+				exit 1
+			 fi
+			 $console doctrine:migrations:migrate
+		  else
+			 echo "Looks like you're not using migrations! the following queries will be run:"
+			 $console doctrine:schema:update --dump-sql --complete
+			 read -p "Do you wish to update the schema (y/n) ? " -n 1
+			 if [[ ! $REPLY =~ ^[Yy]$ ]]
+			 then
+				echo "not updating"
+				exit 1
+			 fi
+			 $console doctrine:schema:update --force --complete
+		  fi
+		  ;;
+		3)
+		  $console doctrine:schema:validate
+		  echo "Your schema is invalid, but won't be updated because your mapping has errors. Please Fix them first."
+		  ;;
+	esac
+}
+
+updateSchema

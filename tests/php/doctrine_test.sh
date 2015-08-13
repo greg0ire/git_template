@@ -54,6 +54,7 @@ initRepo()
 	rm --recursive --force .git
 	git init --quiet .
 	git config hooks.enabled-plugins php/doctrine
+	git config hooks.doctrine.sf-executable console
 }
 
 oneTimeSetUp()
