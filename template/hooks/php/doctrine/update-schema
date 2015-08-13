@@ -10,6 +10,9 @@ updateSchema()
 	$console doctrine:schema:validate --quiet
 	result=$?
 	case $result in
+		0)
+			# nothing to do. Perfect.
+			;;
 		2)
 			echo "Your schema is not up to date!"
 			if [ -d "vendor/doctrine/migrations" ]
@@ -34,7 +37,7 @@ updateSchema()
 				$console doctrine:schema:update --force --complete
 			fi
 			;;
-		3)
+		*)
 			$console doctrine:schema:validate
 			echo "Your schema is invalid, but won't be updated because your mapping has errors. Please Fix them first."
 			;;
