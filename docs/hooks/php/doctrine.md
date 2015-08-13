@@ -12,7 +12,7 @@ you are using docker and you want to execute the binary in the container, for
 instance.
 
 ```sh
-git config hooks.doctrine.sf-executable "docker exec my_containe /path/to/app/console"
+git config hooks.doctrine.sf-executable "docker exec my_container /path/to/app/console"
 ```
 
 # Activation
