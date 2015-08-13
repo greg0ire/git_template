@@ -28,6 +28,12 @@ testOptionalDoesNotOutputAnyThing()
 	assertEquals "$(cat "$stderrF") was output" "" "$(cat "$stderrF")"
 }
 
+testDefaultValue()
+{
+	get_hook_config missing value actual optional foo 2> "$stderrF"
+	assertEquals "the return value should be foo" foo "$actual"
+}
+
 initRepo()
 {
 	cd "$testRepo"
