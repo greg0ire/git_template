@@ -1,8 +1,8 @@
 #!/bin/bash
-. .git/hooks/php/composer/react.sh
+. "$GIT_DIR/hooks/change_detector.sh"
+. "$GIT_DIR/hooks/php/composer/react.sh"
 
-CHANGED=$(git diff 'HEAD@{1}' --stat -- "$(git rev-parse --show-toplevel)/composer.lock" | wc --lines)
-if [ "$CHANGED" -gt 0 ];
+if has_changed post-merge composer.lock
 then
 	echo "composer.lock has changed!"
 	react
