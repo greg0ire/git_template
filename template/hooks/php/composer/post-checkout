@@ -1,10 +1,10 @@
 #!/bin/bash
-. .git/hooks/php/composer/react.sh
+. "$GIT_DIR/hooks/change_detector.sh"
+. "$GIT_DIR/hooks/php/composer/react.sh"
 
 if [ -f composer.lock ]
 then
-	CHANGED=$(git diff "$1" "$2" --stat -- "$GIT_DIR/../composer.lock" | wc --lines)
-	if [ "$CHANGED" -gt 0 ];
+	if has_changed post-checkout composer.lock
 	then
 		react
 	fi
