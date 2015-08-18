@@ -2,7 +2,7 @@
 . "$GIT_DIR/hooks/change_detector.sh"
 . "$GIT_DIR/hooks/php/doctrine/update-schema"
 
-if has_changed post-commit composer.lock src/*/Entity src/*/Resources/config/doctrine
+if has_changed post-commit composer.lock src/*/*/Entity src/*/*/Resources/config/doctrine
 then
 	updateSchema
 fi
