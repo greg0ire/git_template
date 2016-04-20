@@ -16,6 +16,7 @@ build_ctags_command()
 	fi
 
 	local command=$(cat <<-EOT
+		flock --nonblock /tmp/git-template-ctags.lock
 		ctags
 			-h ".php"
 			--recurse
