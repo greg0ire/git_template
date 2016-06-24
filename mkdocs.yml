@@ -7,6 +7,7 @@ pages:
   - [hooks/work-in-progress.md, 'Hooks', 'Work In Progress']
   - [hooks/php/composer.md, 'Hooks', 'PHP : Composer']
   - [hooks/php/ctags.md, 'Hooks', 'PHP : Ctags']
+  - [hooks/php/cs-fixer.md, 'Hooks', 'PHP : Coding Standards Fixer']
   - [hooks/php/sismo.md, 'Hooks', 'PHP : Sismo']
   - [hooks/php/doctrine.md, 'Hooks', 'PHP : Doctrine']
   - [upgrade/2-to-3.md, 'Upgrading', '2.x.x to 3.x.x']

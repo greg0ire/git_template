@@ -1,0 +1,10 @@
+#!/bin/bash -u
+. "$GIT_DIR/hooks/git_config_wrapper.sh"
+
+fix_cs()
+{
+	get_hook_config php-cs-fixer executable executable optional php-cs-fixer
+	$executable fix --verbose
+}
+
+fix_cs
