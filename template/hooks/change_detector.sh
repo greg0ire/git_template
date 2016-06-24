@@ -39,7 +39,7 @@ has_changed()
 				fi
 				changed="$(git diff-index \
 					--name-status $against \
-					-- composer.json | wc --lines)"
+					-- ${monitored_paths[*]} | wc --lines)"
 			;;
 	esac
 
