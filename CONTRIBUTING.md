@@ -12,6 +12,8 @@ add the resulting directory to your `$PATH`, and run `tests/all.sh`.
 
 ## General contribution guidelines
 
+Tabs are used for indention.
+
 When using commands, prefer long options against short options. I invented the
 following rule, please follow it:
 
