@@ -1,8 +1,15 @@
 #!/bin/bash
 . .git/hooks/hook_switcher.sh
 
+if [[ "$OSTYPE" == *darwin* ]]
+then
+  READLINK_CMD='greadlink'
+else
+  READLINK_CMD='readlink'
+fi
+ 
 readonly PROGNAME=$(basename "$0")
-readonly PROGDIR=$(readlink -m "$(dirname "$0")")
+readonly PROGDIR=$($READLINK_CMD -m "$(dirname "$0")")
 
 main() {
 	local hookName
