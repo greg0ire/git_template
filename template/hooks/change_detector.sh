@@ -22,12 +22,12 @@ has_changed()
 			fi
 			changed="$(git diff-tree $against 'HEAD' \
 				--stat \
-				-- ${monitored_paths[*]}| wc --lines)"
+				-- ${monitored_paths[*]}| wc -l)"
 			;;
 		post-checkout | post-merge )
 			changed="$(git diff 'HEAD@{1}' \
 				--stat \
-				-- ${monitored_paths[*]}| wc --lines)"
+				-- ${monitored_paths[*]}| wc -l)"
 			;;
 		pre-commit)
 				if git rev-parse --verify HEAD >/dev/null 2>&1
@@ -39,7 +39,7 @@ has_changed()
 				fi
 				changed="$(git diff-index \
 					--name-status $against \
-					-- ${monitored_paths[*]} | wc --lines)"
+					-- ${monitored_paths[*]} | wc -l)"
 			;;
 	esac
 
