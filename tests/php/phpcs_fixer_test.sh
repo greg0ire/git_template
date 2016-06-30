@@ -8,9 +8,9 @@ testRunsPhpCsFixerOnPhpFileChange()
 	export -f phpcsfixer
 	export SHUNIT_TMPDIR
 	initRepo
-	mkdir --parents a/b/c.php
-	echo "a" > c.php
-	git add c.php
+	mkdir --parents a/b
+	echo "a" > a/b/c.php
+	git add a/b/c.php
 	git commit --quiet --message "first version of c.php"
 	assertTrue 'PhpCsFixer was not run' "[ $(cat "${SHUNIT_TMPDIR}/phpCsFixerWasRun") == fix ]"
 	rm "${SHUNIT_TMPDIR}/phpCsFixerWasRun"

@@ -1,7 +1,7 @@
 #!/bin/bash
 . "$GIT_DIR/hooks/change_detector.sh"
 
-if has_changed pre-commit ./**/*.php ./*.php
+if has_changed pre-commit '**/*.php' '*.php'
 then
 	.git/hooks/php/cs-fixer/fix-cs
 fi
