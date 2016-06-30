@@ -5,7 +5,7 @@
 has_changed()
 {
 	local hook_type=$1; shift
-	local monitored_paths=($@)
+	local monitored_paths=("$@")
 	local against
 	local changed
 
@@ -39,7 +39,7 @@ has_changed()
 				fi
 				changed="$(git diff-index \
 					--name-status $against \
-					-- ${monitored_paths[*]} | wc -l)"
+					-- "${monitored_paths[*]}" | wc -l)"
 			;;
 	esac
 
