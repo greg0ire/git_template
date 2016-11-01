@@ -1,0 +1,77 @@
+[alias]
+	wf = workflow
+
+        br = branch
+
+        ci = commit
+        cm = commit -m
+        cma = commit -a -m
+        cit = !"echo \"commit message:\" && read message && git commit -m \"$message\""
+        ca = commit --amend -C HEAD
+        caa = commit -a --amend -C HEAD
+
+        cl = clone
+
+        co = checkout
+        ct = !sh -c 'git checkout -t origin/$1' -
+        cb = checkout -b
+
+        t = !sh -c 'git tag -a $1' -
+        pt = push origin --tags
+        pu = !sh -c 'git push -u origin $1' -
+
+        cp = cherry-pick
+        up = !git fetch origin && git rebase origin/develop
+        ir = !sh -c 'git rebase -i $1' -
+        irb = !sh -c 'git rebase -i HEAD~$1' -
+
+        st = status
+        here = status .
+
+        df = diff
+        dc = diff --cached
+        conflicts = diff --name-only --diff-filter=U
+
+        f = "!git ls-files | grep -i"
+        grep = grep -Ii
+        gr = grep -Ii
+
+        lg = log -p
+        filelog = log -u
+        fl = log -u
+
+        undo = reset HEAD~1
+
+        rmb = !sh -c 'git branch -D $1 && git push origin :$1' -
+        cleanup = !git remote prune origin && git gc && git clean -dfx && git stash clear
+
+        sl = stash list
+        ss = stash save
+        sp = stash pop
+
+        mf = merge --ff
+        mnf = merge --no-ff
+        pf = pull --ff
+        pnf = pull --no-ff
+
+        sub = submodule update --init --recursive
+        rem="!git config -l | grep remote.*url | tail -n +2"
+        who = shortlog -n -s --no-merges
+        la = "!git config -l | grep alias | cut -c 7-"
+
+[branch "master"]
+        mergeoptions = --no-ff
+[branch "stage"]
+        mergeoptions = --no-ff
+[branch "release"]
+        mergeoptions = --no-ff
+
+[push]
+        default = tracking
+
+[core]
+        excludesfile = ~/.gitignore
+
+[merge]
+        ff = false
+
