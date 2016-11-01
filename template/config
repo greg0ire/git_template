@@ -1,5 +1,5 @@
 [alias]
-	wf = workflow
+        wf = workflow
 
         br = branch
 
