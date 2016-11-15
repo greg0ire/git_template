@@ -67,7 +67,7 @@
         mergeoptions = --no-ff
 
 [push]
-        default = tracking
+        default = upstream
 
 [core]
         excludesfile = ~/.gitignore
