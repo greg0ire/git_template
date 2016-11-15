@@ -39,6 +39,7 @@
         lg = log -p
         filelog = log -u
         fl = log -u
+        graph = log --graph --all --decorate --oneline
 
         undo = reset HEAD~1
 
