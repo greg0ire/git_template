@@ -79,3 +79,6 @@
 [merge]
         ff = false
 
+[hooks]
+        enabled-plugins = syntaxchecker
+
