@@ -50,6 +50,9 @@
         ss = stash save
         sp = stash pop
 
+        wip = !git add $(git rev-parse --show-toplevel) && git commit -nm WIP
+        unwip = !git log -n 1 | grep -q -c WIP && git reset HEAD~1
+
         mf = merge --ff
         mnf = merge --no-ff
         pf = pull --ff
