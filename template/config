@@ -39,6 +39,7 @@
         lg = log -p
         filelog = log -u
         fl = log -u
+        graph = log --graph --all --decorate --oneline
 
         undo = reset HEAD~1
 
@@ -48,6 +49,9 @@
         sl = stash list
         ss = stash save
         sp = stash pop
+
+        wip = !git add $(git rev-parse --show-toplevel) && git commit -nm WIP
+        unwip = !git log -n 1 | grep -q -c WIP && git reset HEAD~1
 
         mf = merge --ff
         mnf = merge --no-ff
@@ -67,11 +71,14 @@
         mergeoptions = --no-ff
 
 [push]
-        default = tracking
+        default = upstream
 
 [core]
         excludesfile = ~/.gitignore
 
 [merge]
         ff = false
+
+[hooks]
+        enabled-plugins = syntaxchecker
 
