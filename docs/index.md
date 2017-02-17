@@ -41,16 +41,8 @@ cd $(git config --path --get init.templatedir)
 git pull
 ```
 
-Then, you can update any repository by running this in the working tree of your
-repository :
-
-```sh
-$(git config --path --get init.templatedir)/../update.sh
-# If your template directory is ~/.git_template/template, this is equivalent to :
-~/.git_template/update.sh
-```
-
-Make sure you have rsync installed.
+Then, you can update any repository by running `git init` from within it.
+Don't fear, [it is perfectly safe][init-manpage].
 
 ## Setup on existing projects
 
@@ -58,3 +50,4 @@ You can also run the update script from a project created before your switch
 to `git_template`, but be aware that any hook you created yourself will be deleted.
 
 [0]: https://github.com/greg0ire/git_template
+[init-manpage]: https://git-scm.com/docs/git-init
