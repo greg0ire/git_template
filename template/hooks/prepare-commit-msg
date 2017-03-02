@@ -1,6 +1,6 @@
 #!/bin/sh
 
-TICKET=$(git rev-parse --abbrev-ref HEAD | awk -F'/' '{print $2}')
+TICKET=$(git rev-parse --abbrev-ref HEAD | awk -F'/' '{print toupper($2)}')
 
 if [ -n "$TICKET" ]; then
     echo "$TICKET `cat $1`" > $1
