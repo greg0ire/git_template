@@ -2,7 +2,7 @@
 . .git/hooks/hook_switcher.sh
 
 readonly PROGNAME=$(basename "$0")
-readonly PROGDIR=$(readlink -m "$(dirname "$0")")
+readonly PROGDIR="$(cd "$(dirname "$0")"; pwd)"
 
 main() {
 	local hookName
