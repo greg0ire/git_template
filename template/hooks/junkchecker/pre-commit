@@ -9,7 +9,7 @@ then
 		against=4b825dc642cb6eb9a060e54bf8d69288fbee4904
 	fi
 
-	for FILE in $(git diff-index --cached --name-status $against -- | cut --characters=3-); do
+	for FILE in $(git diff-index --cached --name-status $against -- | cut -c 3-); do
 		if [ -f "$FILE" ]
 		then
 			for line in $(cat "$junkchecker_phrases_file")
