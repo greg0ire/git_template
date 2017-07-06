@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# If commit message is a fixup message, ignore it
+[[ -n "$(cat $1 | grep 'fixup!')" ]] && FIXUP="YES"
+
+TICKET=$(git symbolic-ref HEAD | rev | cut -d/ -f1 | rev | grep -o -E "[A-Z]+-[0-9]+")
+if [[ -n "${TICKET}" && -z "${FIXUP}" ]]; then
+    sed -i.bak -e "1s/^/[${TICKET}] /" $1
+fi
