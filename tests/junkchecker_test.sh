@@ -49,6 +49,18 @@ testExitsWithCodeEqualToZeroWhenJunkIsRemovedAndNotAdded()
 	assertEquals "The junkchecker should be ok with this commit" 0 $rtrn
 }
 
+testMultiWordPattern()
+{
+	initRepo
+	echo "var_dump" > junk-phrases
+	echo "remove this debug line" >> junk-phrases
+	echo "// TODO remove this debug line" > someFile
+	git add someFile
+	git commit --message "Let's commit something we shouldn't" 1> /dev/null 2> "${stderrF}"
+	rtrn=$?
+	assertEquals "The junkchecker detected the junk" 1 $rtrn
+}
+
 initRepo()
 {
 	cd "$testRepo"
