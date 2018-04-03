@@ -1,16 +1,14 @@
 #!/bin/bash
-. .git/hooks/hook_switcher.sh
 
 readonly PROGNAME=$(basename "$0")
 readonly PROGDIR="$(cd "$(dirname "$0")"; pwd)"
+readonly GIT_DIR="$(git rev-parse --git-dir)"
+export GIT_DIR
+
+. "$GIT_DIR/hooks/hook_switcher.sh"
 
 main() {
 	local hookName
-	if [ ! -d .git ]
-	then
-		echo "This script should be run from the root of a repository" >&2
-		exit 1
-	fi
 	for directory in $(find "$PROGDIR/hooks" -type d | sort | \
 	awk '$0 !~ last "/" {print last} {last=$0} END {print last}')
 	do
@@ -18,7 +16,6 @@ main() {
 		echo "Configuring $hookName"
 		switch_hook "$hookName"
 		find "$directory" -name configure.sh -exec {} \;
-
 	done
 }
 

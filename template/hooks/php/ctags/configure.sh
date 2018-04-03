@@ -1,5 +1,5 @@
-#!/bin/bash
-. .git/hooks/hook_switcher.sh
+#!/bin/bash -u
+. "$GIT_DIR/hooks/hook_switcher.sh"
 
 main() {
 	local projectType
