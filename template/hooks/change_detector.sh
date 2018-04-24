@@ -5,13 +5,13 @@
 has_changed()
 {
 	local hook_type=$1; shift
-	local monitored_paths=("$@")
+	local monitored_paths="$@"
 	local against
 	local changed
 	local workDir
+	set -f
 
 	workDir=$(git rev-parse --show-toplevel)
-	monitored_paths=( "${monitored_paths[@]/#/$workDir/}" )
 
 	case $hook_type in
 		post-commit)
@@ -24,12 +24,12 @@ has_changed()
 			fi
 			changed="$(git diff-tree $against 'HEAD' \
 				--stat \
-				-- ${monitored_paths[*]}| wc -l)"
+				-- ${monitored_paths}| wc -l)"
 			;;
 		post-checkout | post-merge )
 			changed="$(git diff 'HEAD@{1}' \
 				--stat \
-				-- ${monitored_paths[*]}| wc -l)"
+				-- ${monitored_paths}| wc -l)"
 			;;
 		pre-commit)
 			if git rev-parse --verify HEAD >/dev/null 2>&1
@@ -41,7 +41,7 @@ has_changed()
 			fi
 			changed="$(git diff-index \
 				--name-status $against \
-				-- "${monitored_paths[*]}" | wc -l)"
+				-- ${monitored_paths} | wc -l)"
 			;;
 	esac
 
