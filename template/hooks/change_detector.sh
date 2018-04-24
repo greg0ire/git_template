@@ -8,8 +8,10 @@ has_changed()
 	local monitored_paths=("$@")
 	local against
 	local changed
+	local workDir
 
-	monitored_paths=( "${monitored_paths[@]/#/$GIT_DIR/../}" )
+	workDir=$(git rev-parse --show-toplevel)
+	monitored_paths=( "${monitored_paths[@]/#/$workDir/}" )
 
 	case $hook_type in
 		post-commit)
