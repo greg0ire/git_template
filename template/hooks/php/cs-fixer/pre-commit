@@ -3,5 +3,5 @@
 
 if has_changed pre-commit '**/*.php' '*.php'
 then
-	.git/hooks/php/cs-fixer/fix-cs
+	"$GIT_DIR/hooks/php/cs-fixer/fix-cs"
 fi

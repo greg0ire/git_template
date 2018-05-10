@@ -1,5 +1,6 @@
 #!/bin/bash -u
-source .git/hooks/git_config_wrapper.sh
+gitDir=$(git rev-parse --git-dir)
+source "$gitDir/hooks/git_config_wrapper.sh"
 
 new_flags_are_supported()
 {
@@ -9,6 +10,8 @@ new_flags_are_supported()
 build_ctags_command()
 {
 	local tagKinds
+	local gitDir
+	gitDir=$(git rev-parse --git-dir)
 	get_hook_config php-ctags tag-kinds tagKinds optional
 	if [[ $? -ne 0 ]]
 	then
@@ -20,14 +23,14 @@ build_ctags_command()
 		ctags
 			-h ".php"
 			--recurse
-			-f.git/tags.$$
+			-f$gitDir/tags.$$
 			--languages=php
 			--totals=yes
 			--tag-relative=yes
 			--PHP-kinds=${tagKinds}
 			--exclude="*.js"
 			--exclude=".svn"
-			--exclude=".git"
+			--exclude="$gitDir"
 			--exclude=".rsync_cache"
 			--exclude="vendor/*/vendor"
 			--exclude="vendor/*/Tests"
@@ -61,7 +64,7 @@ build_ctags_command()
 	eval $command
 }
 
-trap "rm --force .git/tags.$$" EXIT
+trap "rm --force $gitDir/tags.$$" EXIT
 build_ctags_command
 
-mv .git/tags.$$ .git/tags
+mv "$gitDir/tags.$$" "$gitDir/tags"
