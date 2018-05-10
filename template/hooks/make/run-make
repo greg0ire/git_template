@@ -1,0 +1,8 @@
+#!/bin/bash
+# shellcheck source=../git_config_wrapper.sh
+gitDir=$(git rev-parse --git-dir)
+. "$gitDir/hooks/git_config_wrapper.sh"
+
+get_hook_config make target target optional test
+
+make --directory="$(git rev-parse --show-toplevel)" $target
