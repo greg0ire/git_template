@@ -1,0 +1,11 @@
+#!/bin/bash
+# shellcheck source=../git_config_wrapper.sh
+gitDir=$(git rev-parse --git-dir)
+. "$gitDir/hooks/git_config_wrapper.sh"
+
+get_hook_config make on hooks optional "pre-push"
+
+if echo "$hooks"|grep --quiet pre-push > /dev/null
+then
+	. "$gitDir/hooks/make/run-make"
+fi

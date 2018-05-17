@@ -4,8 +4,8 @@ for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do
 	if [ -f "$GIT_DIR/hooks/$enabled_plugin/pre-commit" ]
 	then
-		"$GIT_DIR/hooks/$enabled_plugin/pre-commit"
-		if [ $? -ne 0 ]
+
+		if ! "$GIT_DIR/hooks/$enabled_plugin/pre-commit"
 		then
 			exit 1
 		fi
