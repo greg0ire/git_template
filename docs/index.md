@@ -10,7 +10,7 @@ a bit later ?
 
 If this feels familiar, Git Template has your back, give it a try!
 
-[Git Template][0] is a remplacement for the default directory that gets copied
+[Git Template][0] is a replacement for the default directory that gets copied
 each time you create or clone a git repository. That's right, every time you
 create or clone a git repository, some files get copied in your `.git` directory.
 These files mostly consist of example hooks you may change and adapt to meet your
