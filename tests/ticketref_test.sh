@@ -2,19 +2,14 @@
 
 testAddsTicketRefToStartOfCommitMsg()
 {
-	testRepo=$SHUNIT_TMPDIR/test_repo
-	mkdir --parents "$testRepo"
-	cd "$testRepo"
-	git init --quiet --bare .
-	cd ..
-	mkdir other_repo
-	cd other_repo
+	testRepo=$SHUNIT_TMPDIR/test_repo1
+	mkdir -p "${testRepo}"
+	cd "${testRepo}"
 	git init --quiet .
-	git config hooks.enabled-plugins ticketref
+	git config --add hooks.enabled-plugins ticketref
 	git checkout -b ABC-1234-branch 2>/dev/null
-	touch dummyFile
+	date > dummyFile
 	git add dummyFile
-	git remote add origin ../test_repo
 	git commit --quiet --message "Add dummyFile to repo"
 	git log -1 | grep 'ABC-1234'
 	rtrn=$?
