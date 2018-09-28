@@ -27,8 +27,7 @@ testEnsureCommitMsgContainsOneTicketRef()
 	date > dummyFile
 	git add dummyFile
 	git commit --quiet --message "ABC-1234 Add dummyFile to repo"
-  git log -1
-	git log -1 | grep 'ABC-1234'
+	git log -1 | grep -E '^ABC-1234'
 	rtrn=$?
 	assertEquals "Single reference of ABC-1234 found within Commit " 1 $rtrn
 }
