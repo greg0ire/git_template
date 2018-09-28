@@ -12,9 +12,8 @@ then
 	for FILE in $(git diff-index --cached --name-status $against -- | cut -c 3-); do
 		if [ -f "$FILE" ]
 		then
-			for line in $(cat "$junkchecker_phrases_file")
+			while IFS='' read -r line || [[ -n "$line" ]];
 			do
-
 				git diff --cached --diff-filter=ACMR "$FILE" | grep -E '^\+' | grep --quiet "$line"
 				if [ $? -eq 0 ]
 				then
@@ -24,7 +23,7 @@ then
 					EOT
 					exit 1
 				fi
-			done
+			done < "$junkchecker_phrases_file"
 		fi
 	done
 else

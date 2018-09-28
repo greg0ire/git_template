@@ -1,5 +1,5 @@
 #!/bin/bash
-. .git/hooks/hook_switcher.sh
+. $GIT_DIR/hooks/hook_switcher.sh
 
 main() {
 	if hook_is_enabled php/sismo

@@ -3,6 +3,7 @@ pages:
   - [index.md, Home]
   - [usage.md, Usage]
   - [hooks/junk-checker.md, 'Hooks', 'Junk checker']
+  - [hooks/make.md, 'Hooks', 'Make']
   - [hooks/syntax-checker.md, 'Hooks', 'Syntax checker']
   - [hooks/work-in-progress.md, 'Hooks', 'Work In Progress']
   - [hooks/php/composer.md, 'Hooks', 'PHP : Composer']

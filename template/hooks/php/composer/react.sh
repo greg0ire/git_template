@@ -1,5 +1,5 @@
 #!/bin/bash
-. .git/hooks/git_config_wrapper.sh
+. $GIT_DIR/hooks/git_config_wrapper.sh
 
 function react()
 {

@@ -10,7 +10,7 @@ a bit later ?
 
 If this feels familiar, Git Template has your back, give it a try!
 
-[Git Template][0] is a remplacement for the default directory that gets copied
+[Git Template][0] is a replacement for the default directory that gets copied
 each time you create or clone a git repository. That's right, every time you
 create or clone a git repository, some files get copied in your `.git` directory.
 These files mostly consist of example hooks you may change and adapt to meet your
@@ -41,8 +41,16 @@ cd $(git config --path --get init.templatedir)
 git pull
 ```
 
-Then, you can update any repository by running `git init` from within it.
-Don't fear, [it is perfectly safe][init-manpage].
+Then, you can update any repository by running this in the working tree of your
+repository :
+
+```sh
+$(git config --path --get init.templatedir)/../update.sh
+# If your template directory is ~/.git_template/template, this is equivalent to :
+~/.git_template/update.sh
+```
+
+Make sure you have rsync installed.
 
 ## Setup on existing projects
 
@@ -50,4 +58,3 @@ You can also run the update script from a project created before your switch
 to `git_template`, but be aware that any hook you created yourself will be deleted.
 
 [0]: https://github.com/greg0ire/git_template
-[init-manpage]: https://git-scm.com/docs/git-init

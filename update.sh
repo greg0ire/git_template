@@ -1,7 +1,10 @@
 #!/bin/bash -eu
 main()
 {
-	echo This script is deprecated. Please run git init instead.
-	git init
+	local templateDir=$(git config --get --path init.templatedir)
+	local gitDir=$(git rev-parse --git-dir)
+
+	rsync --archive --verbose --compress --cvs-exclude "$templateDir/hooks/" "$gitDir/hooks" --delete
+	cp -f "$templateDir/configure.sh" "$gitDir"
 }
 main

@@ -1,12 +1,9 @@
 #!/bin/bash -eu
 main()
 {
-	local templateDir=$(git config --get --path init.templatedir)
+	local gitDir
+	gitDir=$(git rev-parse --git-dir)
 
-	if [ ! -d .git ]
-	then
-		echo "This script is supposed to be run at the root of a git repository" >&2
-	fi
-	rm -rf .git/tests .git/docs .git/mkdocs.yml .git/README.md .git/LICENSE .git/CONTRIBUTING.md .git/update.sh
+	rm -rf "$gitDir/{tests,docs,mkdocs.yml,README.md,LICENSE,CONTRIBUTING.md,update.sh}"
 }
 main

@@ -1,9 +1,10 @@
 #!/bin/bash
+gitDir=$(git rev-parse --git-dir)
 for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do
-	if [ -f ".git/hooks/$enabled_plugin/pre-push" ]
+	if [ -f "$gitDir/hooks/$enabled_plugin/pre-push" ]
 	then
-		".git/hooks/$enabled_plugin/pre-push"
+		"$gitDir/hooks/$enabled_plugin/pre-push"
 		ret=$?
 		if [ $ret -ne 0 ]
 		then

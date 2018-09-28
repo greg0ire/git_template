@@ -1,8 +1,9 @@
 #!/bin/bash
-if [ -f .git/hooks/configure.sh ]
+gitDir=$(git rev-parse --git-dir)
+if [ -f "$gitDir/hooks/configure.sh" ]
 then
 	echo "Huh ? Copy failed or what ?"
-	ls .git/hooks
+	ls $gitDir/hooks
 	ls "$(git config --path --get init.templatedir)"
 	exit 1
 fi
