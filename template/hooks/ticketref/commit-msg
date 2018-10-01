@@ -1,0 +1,21 @@
+#!/bin/bash
+# shellcheck source=../git_config_wrapper.sh
+GIT_DIR=$(git rev-parse --git-dir)
+. "$GIT_DIR/hooks/git_config_wrapper.sh"
+
+get_hook_config ticketref position REF_LOC optional PRE
+
+# If commit message is a fixup message, ignore it
+grep --quiet 'fixup!' "$1" && FIXUP="YES"
+
+TICKET=$(git symbolic-ref HEAD | rev | cut -d/ -f1 | rev | grep -o -E "[A-Z]+-[0-9]+")
+grep --quiet "${TICKET}" "$1" && TICKET_EXISTS="YES"
+
+if [[ -n "${TICKET}" && -z "${TICKET_EXISTS}" && -z "${FIXUP}" ]]; then
+
+  if [[ "${REF_LOC}" == "PRE" ]]; then
+    sed -i.bak -e "1s/^/[${TICKET}] /" "$1"
+  else
+    printf '\n\nRef: %s' "${TICKET}" >> "$1"
+  fi
+fi
