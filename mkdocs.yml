@@ -1,15 +1,18 @@
 site_name: Git Template
-pages:
-  - [index.md, Home]
-  - [usage.md, Usage]
-  - [hooks/junk-checker.md, 'Hooks', 'Junk checker']
-  - [hooks/make.md, 'Hooks', 'Make']
-  - [hooks/syntax-checker.md, 'Hooks', 'Syntax checker']
-  - [hooks/work-in-progress.md, 'Hooks', 'Work In Progress']
-  - [hooks/ticketref.md, 'Hooks', 'Ticket Reference']
-  - [hooks/php/composer.md, 'Hooks', 'PHP : Composer']
-  - [hooks/php/ctags.md, 'Hooks', 'PHP : Ctags']
-  - [hooks/php/cs-fixer.md, 'Hooks', 'PHP : Coding Standards Fixer']
-  - [hooks/php/sismo.md, 'Hooks', 'PHP : Sismo']
-  - [hooks/php/doctrine.md, 'Hooks', 'PHP : Doctrine']
-  - [upgrade/2-to-3.md, 'Upgrading', '2.x.x to 3.x.x']
+nav:
+  - Home: index.md
+  - Usage: usage.md
+  - Hooks:
+    - 'Junk checker': hooks/junk-checker.md
+    - 'Make': hooks/make.md
+    - 'Syntax checker': hooks/syntax-checker.md
+    - 'Work In Progress': hooks/work-in-progress.md
+    - 'Ticket Reference': hooks/ticketref.md
+    - PHP:
+      - 'Composer': hooks/php/composer.md
+      - 'Ctags': hooks/php/ctags.md
+      - 'Coding Standards Fixer': hooks/php/cs-fixer.md
+      - 'Sismo': hooks/php/sismo.md
+      - 'Doctrine': hooks/php/doctrine.md
+  - Upgrading:
+    - '2.x.x to 3.x.x': upgrade/2-to-3.md
