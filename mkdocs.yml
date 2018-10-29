@@ -1,4 +1,5 @@
 site_name: Git Template
+theme: readthedocs
 nav:
   - Home: index.md
   - Usage: usage.md
