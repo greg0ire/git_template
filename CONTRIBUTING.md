@@ -6,7 +6,7 @@ First, you must make sure you're able to run the test suite.
 
 Get this random [shunit2][1] fork in ~/src :
 
-    git clone git@github.com:deniscostadsc/shunit2.git
+    git clone git@github.com:kward/shunit2.git
 
 add the resulting directory to your `$PATH`, and run `tests/all.sh`.
 
