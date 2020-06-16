@@ -51,7 +51,7 @@ testRunsComposerOnComposerLockCheckoutChange()
 		touch "${SHUNIT_TMPDIR}/testNotifierWasRun"
 	}
 	export -f testNotifier
-	git checkout --quiet master
+	git checkout --quiet main
 	assertTrue 'testNotifier was not run' "[ -f ${SHUNIT_TMPDIR}/testNotifierWasRun ]"
 
 	git config hooks.notification.notifier echo

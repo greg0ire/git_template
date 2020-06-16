@@ -15,7 +15,7 @@ testWarnsWhenPushingWIPCommits()
 	git add dummyFile
 	git remote add origin ../test_repo
 	git commit --quiet --message "WIP dummyFile is not finished"
-	git push -u origin master 1>/dev/null 2>&1
+	git push -u origin main 1>/dev/null 2>&1
 	rtrn=$?
 	assertEquals "The wipchecker didn't detect a WIP commit" 1 $rtrn
 }

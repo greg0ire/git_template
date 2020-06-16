@@ -1,6 +1,6 @@
 branches:
   only:
-    - master
+    - main
 
 sudo: false
 language: php # that way we get composer
