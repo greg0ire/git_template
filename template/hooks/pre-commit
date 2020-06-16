@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/bash -eu
+GIT_DIR=$(git rev-parse --git-dir)
+export GIT_DIR
 test -f "$GIT_DIR"/CHERRY_PICK_HEAD && exit 0
 for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do

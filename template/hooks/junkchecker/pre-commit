@@ -1,4 +1,5 @@
 #!/bin/bash
+GIT_DIR=$(git rev-parse --git-dir)
 . "$GIT_DIR/hooks/git_config_wrapper.sh"
 get_hook_config junkchecker phrasesfile junkchecker_phrases_file required
 if [ -f "$junkchecker_phrases_file" ]
