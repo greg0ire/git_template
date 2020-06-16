@@ -5,7 +5,7 @@ branches:
 sudo: false
 language: php # that way we get composer
 php:
-  - 5.4
+  - 7.4
 install:
   - git config --global init.templatedir "$(pwd)/template"
   - git config --global user.email "travis@mailinator.com"
