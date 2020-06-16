@@ -1,4 +1,6 @@
-#!/bin/bash
+#!/bin/bash -eu
+GIT_DIR=$(git rev-parse --git-dir)
+export GIT_DIR
 for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do
 	if [ -f "$GIT_DIR/hooks/$enabled_plugin/post-merge" ]

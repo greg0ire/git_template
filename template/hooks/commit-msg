@@ -1,4 +1,5 @@
 #!/bin/bash
+GIT_DIR=$(git rev-parse --git-dir)
 test -d "$GIT_DIR"/rebase-merge -o -d "$GIT_DIR"/rebase-apply && exit 0
 for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do

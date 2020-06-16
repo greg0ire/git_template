@@ -1,4 +1,4 @@
-#!/bin/bash -u
+#!/bin/bash -eu
 . "$GIT_DIR/hooks/git_config_wrapper.sh"
 
 fix_cs()
