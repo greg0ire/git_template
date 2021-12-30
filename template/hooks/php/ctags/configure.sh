@@ -7,10 +7,10 @@ main() {
 	if hook_is_enabled php/ctags
 	then
 		PS3="Select a project type : "
-		select projectType in symfony1 symfony2 none;
+		select projectType in symfony none;
 		do
 			case $projectType in
-				symfony1|symfony2)
+				symfony)
 					git config hooks.php-ctags.project-type $projectType
 					break
 				;;

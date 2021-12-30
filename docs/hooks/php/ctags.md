@@ -25,8 +25,7 @@ git config hooks.php-ctags.project-type projectType
 
 Supported project types :
 
-- symfony1
-- symfony2
+- symfony
 
 This will make ctags ignore cache directories.
 

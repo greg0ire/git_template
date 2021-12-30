@@ -50,11 +50,8 @@ build_ctags_command()
 	if get_hook_config php-ctags project-type projectType optional
 	then
 		case $projectType in
-			symfony2)
-				command="$command --exclude='app/cache/*' --exclude='web/bundles/*'"
-			;;
-			symfony1)
-				command="$command --exclude='cache/*' --exclude='plugins/*/vendor'"
+			symfony)
+				command="$command --exclude='var/cache/*' --exclude='web/bundles/*'"
 			;;
 			*)
 				echo "Unsupported project type $projectType" >&2

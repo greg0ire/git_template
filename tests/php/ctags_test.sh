@@ -8,28 +8,13 @@ testTagsFileIsGeneratedOnCommit()
 	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
 }
 
-testTagsFileWorksWithSymfony1()
+testTagsFileWorksWithSymfony()
 {
-	git config hooks.php-ctags.project-type symfony1
+	git config hooks.php-ctags.project-type symfony
 	git config hooks.php-ctags.tag-kinds cfiv
 	echo '<?php $indexMe = 42;' > foo.php
-	mkdir cache
-	echo '<?php $doNotIndexMe = 42;' > cache/bar.php
-	git add foo.php
-	git commit --quiet --message "foo file"
-	sleep 1 # ctags is run in the background. Wait for it.
-	assertTrue 'The tags file was not generated' "[ -f .git/tags ]"
-	assertTrue "\$indexMe was not found here : $(cat .git/tags)" "grep indexMe .git/tags"
-	assertFalse '$doNotIndexMe was found' "grep doNotIndexMe .git/tags"
-}
-
-testTagsFileWorksWithSymfony2()
-{
-	git config hooks.php-ctags.project-type symfony2
-	git config hooks.php-ctags.tag-kinds cfiv
-	echo '<?php $indexMe = 42;' > foo.php
-	mkdir --parents app/cache
-	echo '<?php $doNotIndexMe = 42;' > app/cache/bar.php
+	mkdir --parents var/cache
+	echo '<?php $doNotIndexMe = 42;' > var/cache/bar.php
 	git add foo.php
 	git commit --quiet --message "foo file"
 	sleep 1 # ctags is run in the background. Wait for it.
