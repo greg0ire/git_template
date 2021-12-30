@@ -29,6 +29,7 @@ build_ctags_command()
 			--tag-relative=yes
 			--PHP-kinds=${tagKinds}
 			--exclude="*.js"
+			--exclude="*.phar"
 			--exclude=".svn"
 			--exclude="$gitDir"
 			--exclude=".rsync_cache"
