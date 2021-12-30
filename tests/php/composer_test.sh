@@ -87,6 +87,7 @@ testRunsComposerOnPostMerge()
 	git commit --quiet --message "second version of composer.lock"
 	cd - > /dev/null
 	export GIT_MERGE_AUTOEDIT=no
+	git config pull.rebase false
 	git pull --quiet > /dev/null 2>&1
 	assertTrue 'Composer was not run' "[ $(cat "${SHUNIT_TMPDIR}/composerWasRun") == install ]"
 	cd - > /dev/null
