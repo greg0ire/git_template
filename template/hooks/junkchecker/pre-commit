@@ -15,6 +15,10 @@ then
 		then
 			while IFS='' read -r line || [[ -n "$line" ]];
 			do
+				if [[ "$line" == "" ]]
+				then
+					break
+				fi
 				git diff --cached --diff-filter=ACMR "$FILE" | grep -E '^\+' | grep --quiet "$line"
 				if [ $? -eq 0 ]
 				then
