@@ -1,6 +1,6 @@
 #!/bin/bash
 # shellcheck source=../git_config_wrapper.sh
-GIT_DIR=$(git rev-parse --git-dir)
+GIT_DIR=$(git rev-parse --git-common-dir)
 . "$GIT_DIR/hooks/git_config_wrapper.sh"
 
 get_hook_config make on hooks optional "pre-push"

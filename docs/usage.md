@@ -4,7 +4,7 @@
 
 Just run the configuration script. From your repository root, run
 
-    "$(git rev-parse --git-dir)/configure.sh"
+    "$(git rev-parse --git-common-dir)/configure.sh"
 
 The script will help you configure some scripts that shouldn't be configured globally.
 

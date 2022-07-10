@@ -2,7 +2,7 @@
 
 readonly PROGNAME=$(basename "$0")
 readonly PROGDIR="$(cd "$(dirname "$0")"; pwd)"
-readonly GIT_DIR="$(git rev-parse --git-dir)"
+readonly GIT_DIR="$(git rev-parse --git-common-dir)"
 export GIT_DIR
 
 . "$GIT_DIR/hooks/hook_switcher.sh"
