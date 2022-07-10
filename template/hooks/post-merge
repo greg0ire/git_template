@@ -1,5 +1,5 @@
 #!/bin/bash -eu
-GIT_DIR=$(git rev-parse --git-dir)
+GIT_DIR=$(git rev-parse --git-common-dir)
 export GIT_DIR
 for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do

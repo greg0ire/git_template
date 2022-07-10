@@ -1,5 +1,5 @@
 #!/bin/bash
-gitDir=$(git rev-parse --git-dir)
+gitDir=$(git rev-parse --git-common-dir)
 if [ -f "$gitDir/hooks/configure.sh" ]
 then
 	echo "Huh ? Copy failed or what ?"

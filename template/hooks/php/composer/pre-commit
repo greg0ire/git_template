@@ -1,5 +1,5 @@
 #!/bin/bash
-GIT_DIR=$(git rev-parse --git-dir)
+GIT_DIR=$(git rev-parse --git-common-dir)
 . "$GIT_DIR/hooks/change_detector.sh"
 
 if has_changed pre-commit composer.json
