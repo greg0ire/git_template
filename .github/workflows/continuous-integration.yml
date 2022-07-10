@@ -3,10 +3,10 @@ name: "Continuous Integration"
 on:
   pull_request:
     branches:
-      - "*.x"
+      - "main"
   push:
     branches:
-      - "*.x"
+      - "main"
 
 env:
   fail-fast: true
