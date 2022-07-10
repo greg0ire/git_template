@@ -17,21 +17,25 @@ jobs:
     runs-on: "ubuntu-20.04"
 
     steps:
+      - name: "Checkout"
+        uses: "actions/checkout@v2"
+
       - name: "Configure"
-        run:
-          - git config --global init.templatedir "$(pwd)/template"
-          - git config --global user.email "travis@mailinator.com"
-          - git config --global user.name "Travis Bot"
-          - "mkdir -p ~/src/shunit2"
-          - "git clone git://github.com/kward/shunit2.git ~/src/shunit2"
-          - "svn checkout https://svn.code.sf.net/p/ctags/code/trunk ~/src/ctags"
-          - "cd ~/src/ctags"
-          - wget http://sourceforge.net/p/ctags/patches/_discuss/thread/3a930d9f/1405/attachment/0000-PHP-parser-rewrite.patch
-          - patch -p1 < 0000-PHP-parser-rewrite.patch
-          - autoconf
-          - autoheader
-          - ./configure
-          - make
-          - chmod +x ctags
-          - cd -
-          - "export PATH=~/src/shunit2:~/src/ctags:$PATH && tests/all.sh"
+        run: |
+          git config --global init.templatedir "$(pwd)/template"
+          git config --global user.email "travis@mailinator.com"
+          git config --global user.name "Travis Bot"
+          mkdir -p ~/src/shunit2
+          git clone https://github.com/kward/shunit2.git ~/src/shunit2
+          svn checkout https://svn.code.sf.net/p/ctags/code/trunk ~/src/ctags
+          cd ~/src/ctags
+          wget http://sourceforge.net/p/ctags/patches/_discuss/thread/3a930d9f/1405/attachment/0000-PHP-parser-rewrite.patch
+          patch -p1 < 0000-PHP-parser-rewrite.patch
+          autoconf
+          autoheader
+          ./configure
+          make
+          chmod +x ctags
+
+      - name: "Run tests"
+        run: "export PATH=~/src/shunit2:~/src/ctags:$PATH && tests/all.sh"
