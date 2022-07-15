@@ -1,10 +1,10 @@
 #!/bin/bash
-GIT_DIR=$(git rev-parse --git-common-dir)
-test -d "$GIT_DIR"/rebase-merge -o -d "$GIT_DIR"/rebase-apply && exit 0
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+test -d "$GIT_COMMON_DIR"/rebase-merge -o -d "$GIT_COMMON_DIR"/rebase-apply && exit 0
 for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do
-	if [ -f "$GIT_DIR/hooks/$enabled_plugin/commit-msg" ]
+	if [ -f "$GIT_COMMON_DIR/hooks/$enabled_plugin/commit-msg" ]
 	then
-		"$GIT_DIR/hooks/$enabled_plugin/commit-msg" "$1" "$2"
+		"$GIT_COMMON_DIR/hooks/$enabled_plugin/commit-msg" "$1" "$2"
 	fi
 done

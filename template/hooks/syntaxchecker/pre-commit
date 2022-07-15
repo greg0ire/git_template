@@ -1,6 +1,6 @@
 #!/bin/bash
-GIT_DIR=$(git rev-parse --git-common-dir)
-. "$GIT_DIR/hooks/git_config_wrapper.sh"
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+. "$GIT_COMMON_DIR/hooks/git_config_wrapper.sh"
 if git rev-parse --verify HEAD >/dev/null 2>&1; then
 	against=HEAD
 else
@@ -10,9 +10,9 @@ fi
 for FILE in $(git diff-index --cached --name-status $against -- | cut -c 3-); do
 	if [ -f "$FILE" ]
 	then
-		if [ -f "$GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh" ]
+		if [ -f "$GIT_COMMON_DIR/hooks/syntaxchecker/${FILE##*.}.sh" ]
 		then
-			source "$GIT_DIR/hooks/syntaxchecker/${FILE##*.}.sh"
+			source "$GIT_COMMON_DIR/hooks/syntaxchecker/${FILE##*.}.sh"
 			if [ $? -ne 0 ]
 			then
 				echo 'Problem while parsing file ' "$FILE"

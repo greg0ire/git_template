@@ -1,6 +1,6 @@
 #!/bin/bash -eu
-. "$GIT_DIR/hooks/change_detector.sh"
-. "$GIT_DIR/hooks/php/composer/react.sh"
+. "$GIT_COMMON_DIR/hooks/change_detector.sh"
+. "$GIT_COMMON_DIR/hooks/php/composer/react.sh"
 
 if [ -f composer.lock ]
 then

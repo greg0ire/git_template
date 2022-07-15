@@ -1,3 +1,2 @@
 #!/bin/bash
-$GIT_DIR/hooks/php/sismo/build-project
-
+$GIT_COMMON_DIR/hooks/php/sismo/build-project

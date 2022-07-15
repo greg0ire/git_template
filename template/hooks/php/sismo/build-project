@@ -1,5 +1,5 @@
 #!/bin/bash
-. $GIT_DIR/hooks/git_config_wrapper.sh
+. $GIT_COMMON_DIR/hooks/git_config_wrapper.sh
 get_hook_config php-sismo path path required
 path_is_defined=$?
 get_hook_config php-sismo slug slug required
