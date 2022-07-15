@@ -1,10 +1,10 @@
 #!/bin/bash -eu
-GIT_DIR=$(git rev-parse --git-common-dir)
-export GIT_DIR
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+export GIT_COMMON_DIR
 for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do
-	if [ -f "$GIT_DIR/hooks/$enabled_plugin/post-merge" ]
+	if [ -f "$GIT_COMMON_DIR/hooks/$enabled_plugin/post-merge" ]
 	then
-		"$GIT_DIR/hooks/$enabled_plugin/post-merge" "$1"
+		"$GIT_COMMON_DIR/hooks/$enabled_plugin/post-merge" "$1"
 	fi
 done

@@ -1,8 +1,8 @@
 #!/bin/bash
-GIT_DIR=$(git rev-parse --git-common-dir)
-. "$GIT_DIR/hooks/change_detector.sh"
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+. "$GIT_COMMON_DIR/hooks/change_detector.sh"
 
 if has_changed pre-commit '**/*.php' '*.php'
 then
-	"$GIT_DIR/hooks/php/cs-fixer/fix-cs"
+	"$GIT_COMMON_DIR/hooks/php/cs-fixer/fix-cs"
 fi

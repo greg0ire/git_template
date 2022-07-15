@@ -1,11 +1,11 @@
 #!/bin/bash -eu
-GIT_DIR=$(git rev-parse --git-common-dir)
-export GIT_DIR
-test -d "$GIT_DIR"/rebase-merge -o -d "$GIT_DIR"/rebase-apply && exit 0
+GIT_COMMON_DIR=$(git rev-parse --git-common-dir)
+export GIT_COMMON_DIR
+test -d "$GIT_COMMON_DIR"/rebase-merge -o -d "$GIT_COMMON_DIR"/rebase-apply && exit 0
 for enabled_plugin in $(git config --get-all hooks.enabled-plugins)
 do
-	if [ -f "$GIT_DIR/hooks/$enabled_plugin/post-commit" ]
+	if [ -f "$GIT_COMMON_DIR/hooks/$enabled_plugin/post-commit" ]
 	then
-		"$GIT_DIR/hooks/$enabled_plugin/post-commit"
+		"$GIT_COMMON_DIR/hooks/$enabled_plugin/post-commit"
 	fi
 done
